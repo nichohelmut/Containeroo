@@ -1,5 +1,5 @@
 class Container < ApplicationRecord
-  has_many :users, through: :visits
+  belongs_to :user
   has_many :visits, dependent: :destroy
   validates :product_category, inclusion: { in: %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy)}
   validates :address, presence: true
