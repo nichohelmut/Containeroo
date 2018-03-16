@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :providers do
     resources :containers do
-      resources :users, only: [:new, :create]
+      resources :users
     end
   end
   #resources :containers, only: [:new, :create,:index, :show]
