@@ -5,6 +5,7 @@ class Providers::UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     @user.save
+    redirect_to new_providers_container_path
 
   end
 

@@ -6,7 +6,8 @@ class Providers::ContainersController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @container = Container.find(params[:id])
+
   end
 
   def new
@@ -15,24 +16,26 @@ class Providers::ContainersController < ApplicationController
     #@user = User.find(params[:id])
   end
   def create
-
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     @container = Container.create(container_params)
     @container.user = current_user
-    @container.save
-    redirect_to providers_container_path(@container)
+    if @container.save
+      redirect_to providers_container_path(@container)
+    else
+      :new
+    end
   end
 
-  def update
+    def update
+
+    end
+
+    private
+    def container_params
+      params.require(:container).permit([:product_category, :address, :description, :supermarket, :user])
+
+
+    end
+
 
   end
-
-  private
-  def container_params
-    params.require(:container).permit([:product_category, :address, :description, :supermarket, :user])
-
-
-  end
-
-
-end
