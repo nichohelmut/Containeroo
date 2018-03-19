@@ -1,4 +1,18 @@
-<%= @container.supermarket %>
-<%= @container.product_category %>
-<%= @container.description %>
-<%= @container.address %>
+<div class="container-fluid">
+  <div class="show-bottom">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="show-titles">
+
+          <h1>Map of container</h1>
+          <h1>Picture of container</h1>
+          <p>Supermarket: <%= @container.supermarket %></p>
+          <p>Where? <%= @container.address %><p>
+          <p>Which Products? <%= @container.product_category %><p>
+          <p>About the Container: <%= @container.description %><p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
+</div>
