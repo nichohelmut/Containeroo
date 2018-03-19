@@ -1,0 +1,7 @@
+<% @containers.each do |container| %>
+  <h1>Supermarket: <%= link_to container.supermarket, customers_container_path(container) %></h1>
+  <p>Where? <%= container.address %><p>
+  <p>Which Products? <%= container.product_category %><p>
+  <p>About the Container: <%= container.description %><p>
+  <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
+<% end %>
