@@ -8,6 +8,7 @@ class Providers::ContainersController < ApplicationController
   def show
     @container = Container.find(params[:id])
 
+
   end
 
   def new
