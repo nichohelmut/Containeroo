@@ -9,20 +9,24 @@ class Providers::ContainersController < ApplicationController
       {
         lat: container.latitude,
         lng: container.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/containers/map_box", locals: { container: container }) }
       }
+    end
   end
-end
 
   def show
     @container = Container.find(params[:id])
-
-
+    @markers =
+    [{
+      lat: @container.latitude,
+      lng: @container.longitude,
+      icon: '/toilet-marker.png',
+      draggable: false
+      }]
   end
 
-  def new
+    def new
 
-    @container = Container.new
+      @container = Container.new
     #@user = User.find(params[:id])
   end
   def create
@@ -36,16 +40,22 @@ end
     end
   end
 
-    def update
+  def update
 
-    end
+  end
 
-    private
-    def container_params
-      params.require(:container).permit(:address, :description, :supermarket, :user, :product_category)
+  def destroy
+    @container = Container.find(params[:id])
+    @container.destroy
 
+  end
 
-    end
+  private
+  def container_params
+    params.require(:container).permit(:address, :description, :supermarket, :user, :product_category)
 
 
   end
+
+
+end
