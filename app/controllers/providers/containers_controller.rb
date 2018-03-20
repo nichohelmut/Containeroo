@@ -3,7 +3,16 @@ class Providers::ContainersController < ApplicationController
 
   def index
     @containers = Container.all
+    @containers = Container.where.not(latitude: nil, longitude: nil)
+
+    @markers = @containers.map do |container|
+      {
+        lat: container.latitude,
+        lng: container.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/containers/map_box", locals: { container: container }) }
+      }
   end
+end
 
   def show
     @container = Container.find(params[:id])
@@ -33,7 +42,7 @@ class Providers::ContainersController < ApplicationController
 
     private
     def container_params
-      params.require(:container).permit([:product_category, :address, :description, :supermarket, :user])
+      params.require(:container).permit(:address, :description, :supermarket, :user, :product_category)
 
 
     end
