@@ -1,4 +1,5 @@
 import GMaps from 'gmaps/gmaps';
+import { autocomplete } from '../components/autocomplete';
 
 const mapElement = document.getElementById('map');
 const markers = JSON.parse(mapElement.dataset.markers);
@@ -22,4 +23,6 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     map.fitLatLngBounds(markers);
   }
 }
+
+autocomplete();
 
