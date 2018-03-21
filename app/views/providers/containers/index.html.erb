@@ -12,4 +12,5 @@
   <p>Which Products? <%= container.product_category %><p>
   <p>About the Container: <%= container.description %><p>
   <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
+  <p><%# link_to "Delete", providers_containers_path(container), method: :delete %></p>
 <% end %>

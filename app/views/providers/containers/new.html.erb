@@ -1,11 +1,12 @@
 <%= simple_form_for @container, url: providers_containers_path  do |f| %>
 <%= f.input :supermarket, collection: %w(HIT Rewe Edeka Aldi Real Metro Lidl Spar Netto Plus TanteEmma) %>
-<%= f.input :address,
-    :input_html => {
-      :value => @container.address,
-      :id => "container_address"
-    } %>
+<%= f.input :address %>
 <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
 <%= f.input :description %>
 <%= f.button :submit %>
 <% end %>
+
+<%= link_to "See all the Containers", providers_containers_path %>
+<%# if user_signed_in? %>
+<%# link_to "See your already created Containers", providers_container_user_path(@container, container_id: @container) %>
+
