@@ -1,6 +1,6 @@
 class Providers::ContainersController < ApplicationController
   #skip_before_action :authenticate_user!, only: [:index, :show]
-
+  #before_action :authorize, :only => [:edit, :destroy]
   def index
     @containers = Container.all
     @containers = Container.where.not(latitude: nil, longitude: nil)
@@ -22,7 +22,7 @@ class Providers::ContainersController < ApplicationController
       icon: '/toilet-marker.png',
       draggable: false
       }]
-  end
+    end
 
     def new
 
@@ -46,7 +46,9 @@ class Providers::ContainersController < ApplicationController
 
   def destroy
     @container = Container.find(params[:id])
+    @container.user = current_user
     @container.destroy
+    redirect_to providers_container_path
 
   end
 
@@ -54,8 +56,16 @@ class Providers::ContainersController < ApplicationController
   def container_params
     params.require(:container).permit(:address, :description, :supermarket, :user, :product_category)
 
-
-  end
-
-
+  #   def authorize
+  #     @container = Container.find(params[:id])
+  #     unless @container.user_id == current_user.id
+  #       flash[:notice] = "You are not the creator of this container, therefore you're not permitted to edit or destroy this article"
+  #   redirect_to root_path # or anything you prefer
+  #   return false # Important to let rails know that the controller should not be executed
+  # end
+#end
 end
+end
+
+
+
