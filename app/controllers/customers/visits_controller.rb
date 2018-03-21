@@ -10,6 +10,16 @@ class Customers::VisitsController < ApplicationController
     #@user = User.find(params[:user_id])
     @visit = Visit.find(params[:id])
     @container = @visit.container
+
+  #@visit = Visit.where(user: current_user, container: @container).first
+  #@visit.container = Container.find(params[:id])
+  @markers =
+  [{
+    lat: @visit.container.latitude,
+    lng: @visit.container.longitude,
+    icon: '/toilet-marker.png',
+    draggable: false
+    }]
   end
 
   def new
