@@ -5,6 +5,11 @@
   data-markers="<%= @markers.to_json %>"
 ></div>
 
+ <%= simple_form_for Container.new, url: customers_containers_path, method: :get do |f| %>
+    <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
+    <%= f.submit "submit" %>
+    <% end %>
+
 <% @containers.each do |container| %>
   <h1>Supermarket: <%= link_to container.supermarket, customers_container_path(container) %></h1>
   <p>Where? <%= container.address %><p>

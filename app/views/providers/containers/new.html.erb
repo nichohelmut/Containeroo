@@ -1,5 +1,5 @@
 <%= simple_form_for @container, url: providers_containers_path  do |f| %>
-<%= f.input :supermarket, collection: %w(HIT Rewe Edeka Aldi Real Metro Lidl Spar Netto Plus TanteEmma) %>
+<%= f.input :supermarket, collection: %w(Private Restaurant Edeka Aldi Real Metro Lidl Spar Netto Plus TanteEmma) %>
 <%= f.input :address %>
 <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
 <%= f.input :description %>

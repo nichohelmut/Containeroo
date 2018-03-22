@@ -2,7 +2,6 @@ class Providers::UsersController < ApplicationController
   #before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
-    #@container = Container.find(params[:id])
     authorize @user
   end
 
@@ -19,12 +18,9 @@ class Providers::UsersController < ApplicationController
 
 
   def destroy
-    # @user = User.find(params[:id])
     @container = Container.find(params[:container_id])
-    #@container.user = current_user
     @container.destroy
     redirect_to providers_container_user_path
-    #authorize @user
   end
 
 
