@@ -1,8 +1,7 @@
 class Customers::VisitsController < ApplicationController
   before_action :set_container
   def index
-    @visits = Visit.all
-
+    @visits = policy_scope(Visit).order(created_at: :desc)
   end
 
   def show
@@ -20,11 +19,13 @@ class Customers::VisitsController < ApplicationController
     icon: '/toilet-marker.png',
     draggable: false
     }]
+    authorize @visit
   end
 
   def new
     @visit = Visit.new
     @visit.user = current_user
+    authorize @visit
   end
 
   def create
@@ -33,7 +34,7 @@ class Customers::VisitsController < ApplicationController
     @visit.container = @container
     @visit.save
     redirect_to customers_container_visit_path(@visit.container, @visit)
-
+    authorize @visit
   end
 
   private
