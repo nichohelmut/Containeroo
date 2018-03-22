@@ -11,6 +11,7 @@
     <% end %>
 
 <% @containers.each do |container| %>
+  <%= container.picture %>
   <h1>Supermarket: <%= link_to container.supermarket, customers_container_path(container) %></h1>
   <p>Where? <%= container.address %><p>
   <p>Which Products? <%= container.product_category %><p>
