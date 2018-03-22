@@ -16,10 +16,10 @@ User.create(first_name: "Nicholas", last_name: "Utikal", email:"nicholasutikal@g
 User.create(first_name: "Markus", last_name: "Haag", email:"markus@gmail.com", password: 123456)
 User.create(first_name: "Peter", last_name: "Tänzer", email:"peter@gmail.com", password: 123456)
 
-Container.create(user_id: User.all.sample.id, product_category: "vegetables", address: "Friedrichstraße 100, 10117 Berlin", supermarket: "Plus", description: "very clean")
-Container.create(user_id: User.all.sample.id, product_category: "meats", address: "Chausseestraße 43, 10115 Berlin", supermarket: "Edeka", description: "not so clean and well guarded")
-Container.create(user_id: User.all.sample.id, product_category: "bread", address: "Heinrich-Heine-Platz 8-12, 10179 Berlin", supermarket: "Private", description: "A loooot of products")
-Container.create(user_id: User.all.sample.id, product_category: "beer", address: "Greifswalderstraße 160, 10409 Berlin", supermarket: "Restaurant", description: "Not friendly")
-Container.create(user_id: User.all.sample.id, product_category: "bread", address: "Friedrichstraße 43-45, 10117 Berlin", supermarket: "Private", description: "A loooot of products")
-Container.create(user_id: User.all.sample.id, product_category: "cans", address: "Olympiastadium, Berlin", supermarket: "Aldi", description: "A loooot of products")
+Container.create(user_id: User.all.sample.id, product_category: "vegetables", address: "Friedrichstraße 100, 10117 Berlin", supermarket: "Plus", description: "very clean", picture: "https://piximus.net/media2/41297/restaurant-leaves-fridge-in-the-street-with-a-special-surprise-1.jpg")
+Container.create(user_id: User.all.sample.id, product_category: "meats", address: "Chausseestraße 43, 10115 Berlin", supermarket: "Edeka", description: "not so clean and well guarded", picture: "https://i.pinimg.com/564x/0f/8f/75/0f8f7562930323df3897e7ab000ac411.jpg")
+Container.create(user_id: User.all.sample.id, product_category: "bread", address: "Heinrich-Heine-Platz 8-12, 10179 Berlin", supermarket: "Private", description: "A loooot of products", picture: "https://piximus.net/media2/41297/restaurant-leaves-fridge-in-the-street-with-a-special-surprise-1.jpg")
+Container.create(user_id: User.all.sample.id, product_category: "beer", address: "Greifswalderstraße 160, 10409 Berlin", supermarket: "Restaurant", description: "Not friendly", picture: "https://piximus.net/media2/41297/restaurant-leaves-fridge-in-the-street-with-a-special-surprise-1.jpg")
+Container.create(user_id: User.all.sample.id, product_category: "bread", address: "Friedrichstraße 43-45, 10117 Berlin", supermarket: "Private", description: "A loooot of products", picture: "https://piximus.net/media2/41297/restaurant-leaves-fridge-in-the-street-with-a-special-surprise-1.jpg")
+Container.create(user_id: User.all.sample.id, product_category: "cans", address: "Olympiastadium, Berlin", supermarket: "Aldi", description: "A loooot of products", picture: "https://piximus.net/media2/41297/restaurant-leaves-fridge-in-the-street-with-a-special-surprise-1.jpg")
 
