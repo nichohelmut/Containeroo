@@ -9,7 +9,7 @@ class Providers::ContainersController < ApplicationController
     @markers = @containers.map do |container|
       {
         lat: container.latitude,
-        lng: container.longitude#,
+        lng: container.longitude
       }
     end
   end
@@ -26,9 +26,8 @@ class Providers::ContainersController < ApplicationController
       authorize @container
     end
 
-    def new
-
-      @container = Container.new
+  def new
+    @container = Container.new
     #@user = User.find(params[:id])
     authorize @container
   end
@@ -50,6 +49,7 @@ class Providers::ContainersController < ApplicationController
     @container.user = current_user
     @container.destroy
     redirect_to providers_container_path
+    authorize @container
   end
 
   private
