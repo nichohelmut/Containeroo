@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   namespace :customers do
-    resources :containers, only: [:index, :show] do
+    resources :containers, only: [:index, :show, :new, :create] do
       resources :visits, only: [:index, :show, :new,:create]
       resources :users, only: [:new, :create, :show]
   end

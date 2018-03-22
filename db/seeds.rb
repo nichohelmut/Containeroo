@@ -16,8 +16,10 @@ User.create(first_name: "Nicholas", last_name: "Utikal", email:"nicholasutikal@g
 User.create(first_name: "Markus", last_name: "Haag", email:"markus@gmail.com", password: 123456)
 User.create(first_name: "Peter", last_name: "Tänzer", email:"peter@gmail.com", password: 123456)
 
-Container.create(user_id: User.all.sample.id, product_category: "vegetables", address: "Friedrichstraße 100, 10117 Berlin", supermarket: "Rewe", description: "very clean")
+Container.create(user_id: User.all.sample.id, product_category: "vegetables", address: "Friedrichstraße 100, 10117 Berlin", supermarket: "Plus", description: "very clean")
 Container.create(user_id: User.all.sample.id, product_category: "meats", address: "Chausseestraße 43, 10115 Berlin", supermarket: "Edeka", description: "not so clean and well guarded")
-Container.create(user_id: User.all.sample.id, product_category: "bread", address: "Heinrich-Heine-Platz 8-12, 10179 Berlin", supermarket: "Aldi", description: "A loooot of products")
-
+Container.create(user_id: User.all.sample.id, product_category: "bread", address: "Heinrich-Heine-Platz 8-12, 10179 Berlin", supermarket: "Private", description: "A loooot of products")
+Container.create(user_id: User.all.sample.id, product_category: "beer", address: "Greifswalderstraße 160, 10409 Berlin", supermarket: "Restaurant", description: "Not friendly")
+Container.create(user_id: User.all.sample.id, product_category: "bread", address: "Friedrichstraße 43-45, 10117 Berlin", supermarket: "Private", description: "A loooot of products")
+Container.create(user_id: User.all.sample.id, product_category: "cans", address: "Olympiastadium, Berlin", supermarket: "Aldi", description: "A loooot of products")
 

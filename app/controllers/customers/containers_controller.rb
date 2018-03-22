@@ -1,17 +1,27 @@
 class Customers::ContainersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
   def index
-    @containers = policy_scope(Container).order(created_at: :desc)
-    @containers = Container.where.not(latitude: nil, longitude: nil)
+    @container = Container.new
+    @containers = policy_scope(Container)
+    @containers = @containers.where.not(latitude: nil, longitude: nil)
+    if params[:container]
+      @container = Container.new(container_params)
+      container_params.each do |key, value|
+        if key == "product_category" && value != ""
+          @containers = @containers.where('product_category = ?', "#{value}")
+        end
+      end
+    end
 
     @markers = @containers.map do |container|
-      {
-        lat: container.latitude,
-        lng: container.longitude#,
-      }
+        {
+      lat: container.latitude,
+      lng: container.longitude#,
+        }
     end
 
   end
+
   def show
     @container = Container.find(params[:id])
   #@visit = Visit.where(user: current_user, container: @container).first
@@ -25,5 +35,22 @@ class Customers::ContainersController < ApplicationController
     }]
     @visit = Visit.new
     authorize @container
+  end
+
+  def new
+    @container = Container.new
+    authorize @container
+  end
+  def create
+    @container = Container.create(container_params)
+    @container.user = current_user
+    @container.save
+    redirect_to customers_containers_path(@container)
+    authorize @container
+  end
+
+  private
+  def container_params
+    params.require(:container).permit(:address, :description, :supermarket, :user, :product_category)
   end
 end
