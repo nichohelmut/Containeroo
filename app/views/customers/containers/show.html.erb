@@ -1,18 +1,18 @@
 <div
   id="map"
   style="width: 100%;
-  height: 600px;"
+  height: 400px;"
   data-markers="<%= @markers.to_json %>"
 ></div>
 
 <div class="container-fluid">
   <div class="show-bottom">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="show-titles">
 
           <h1>Map of container</h1>
-          <%= @container.picture %>
+          <%= image_tag @container.picture %>
           <p>Supermarket: <%= @container.supermarket %></p>
           <p>Where? <%= @container.address %><p>
             <p>Which Products? <%= @container.product_category %><p>
@@ -24,7 +24,7 @@
         <%# link_to "Visit?", customers_container_visit_path(@container), class: "btn-submit" %>
         <%= simple_form_for Visit.new, url: customers_container_visits_path(@container) do |f| %>
           <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
-          <%= f.submit "Visit?", class: "btn btn-primary" %>
+          <%= f.submit "Visit?", class: "btn-submit" %>
     <% end %>
       </div>
 
