@@ -2,7 +2,7 @@
 <h2> E-mail:<%= @user.email %></h2>
 
 
-<h3> All the containers <%= @user.first_name%> created:</h3>
+<h2> All the containers <%= @user.first_name%> created:</h2>
 <% @user.containers.each do |container| %>
   <h2> <%= container.supermarket %></h2>
   <p><%= container.address %></p>
