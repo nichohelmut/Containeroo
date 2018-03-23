@@ -1,11 +1,21 @@
 <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
+id="map"
+style="width: 100%;
+height: 600px;"
+data-markers="<%= @markers.to_json %>"
 ></div>
 
 <h1>Good Luck!</h1>
-<h2><%= @visit.container.supermarket %></h2>
-<%= @visit.container.address %>
-<%= @visit.container.product_category %>
+
+<div>
+  <% if @visit.container.supermarket == "Restaurant" %>
+  <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
+  <% else @visit.container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
+  <h2> <%= image_tag "supermarket.png", height: 80 %><%= @visit.container.supermarket %></h2>
+  <% end %>
+</div>
+
+<p> <%= image_tag "where.png" , height: 80 %><%= @visit.container.address %> </p>
+<p><%= image_tag "food.png", height: 80 %> <%= @visit.container.product_category %></p>
+
+
