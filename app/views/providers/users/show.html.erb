@@ -1,15 +1,26 @@
 <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
-<h2> E-mail:<%= @user.email %></h2>
+<h2> <%= image_tag "mail.png", height: 40 %>     <%= @user.email %></h2>
 
 
-<h2> All the containers <%= @user.first_name%> created:</h2>
-<% @user.containers.each do |container| %>
-  <h2> <%= container.supermarket %></h2>
-  <p><%= container.address %></p>
-  <p>Description <%= container.description %> </p>
-  <% if policy(container).destroy? %>
-  <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
-  <% end %>
-<% end %>
+
+<div class="container">
+  <h2> All the fridges <%= @user.first_name%> shared:</h2>
+  <% @user.containers.each do |container| %>
+  <div class="unit">
+  <!-- <h2> <%= container.supermarket %></h2> -->
+    <% if container.supermarket == "Restaurant" %>
+    <h2> <%= image_tag "restaurant.png", height: 80 %><%= container.supermarket %></h2>
+    <% else container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
+    <h2> <%= image_tag "supermarket.png", height: 80 %><%= container.supermarket %></h2>
+    <% end %>
+
+    <p><%= image_tag "where.png", height: 80 %><%= container.address %></p>
+    <p><%= image_tag "clean.png", height: 80 %>n <%= container.description %> </p>
+    <% if policy(container).destroy? %>
+    <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
+    <% end %>
+  </div>
+    <% end %>
+</div>
 
 <%= link_to "Go Back to See all Containers", providers_containers_path %>
