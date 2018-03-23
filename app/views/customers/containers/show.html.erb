@@ -1,38 +1,50 @@
 <div
-  id="map"
-  style="width: 100%;
-  height: 400px;"
-  data-markers="<%= @markers.to_json %>"
+id="map"
+style="width: 100%;
+height: 400px;"
+data-markers="<%= @markers.to_json %>"
 ></div>
 
-<div class="container-fluid">
-  <div class="show-bottom">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-3">
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
         <div class="show-titles">
-
-
           <%# image_tag @container.picture %>
-          <div>
-          <% if @container.supermarket == "Restaurant" %>
-          <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
-          <% else @container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
-          <h2> <%= image_tag "supermarket.png", height: 80 %><%= @container.supermarket %></h2>
-          <% end %>
-          </div>
 
-          <p>Where? <%= @container.address %><p>
-            <p>Which Products? <%= @container.product_category %><p>
-              <p>About the Container: <%= @container.description %><p>
-              </div>
+          <div>
+            <% if @container.supermarket == "Restaurant" %>
+            <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
+            <% else @container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
+            <h2> <%= image_tag "supermarket.png", height: 80 %><%= @container.supermarket %></h2>
+            <% end %>
+          </div>
+          <div>
+          <p><%= image_tag "where.png", height: 80 %> <%= @container.address %><p>
+            </div>
+            <div>
+            <p><%= image_tag "food.png", height: 80 %> <%= @container.product_category %><p>
+            </div>
             </div>
           </div>
         </div>
-        <%# link_to "Visit?", customers_container_visit_path(@container), class: "btn-submit" %>
-        <%= simple_form_for Visit.new, url: customers_container_visits_path(@container) do |f| %>
-          <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
-          <%= f.submit "Visit?", class: "btn-submit" %>
-    <% end %>
+
       </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="description">
+            <div class="clean"> <%= image_tag "clean.png", height: 80 %>
+            </div>
+            <p><%= @container.description %><p>
+            </div>
+          </div>
+        </div>
+
+
+        <%= simple_form_for Visit.new, url: customers_container_visits_path(@container) do |f| %>
+        <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
+        <%= f.submit "Visit?", class: "btn-submit" %>
+        <% end %>
+
 
 
