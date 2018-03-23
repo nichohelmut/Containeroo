@@ -11,9 +11,16 @@
       <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="show-titles">
 
-          <h1>Map of container</h1>
-          <%= image_tag @container.picture %>
-          <p>Supermarket: <%= @container.supermarket %></p>
+
+          <%# image_tag @container.picture %>
+          <div>
+          <% if @container.supermarket == "Restaurant" %>
+          <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
+          <% else @container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
+          <h2> <%= image_tag "supermarket.png", height: 80 %><%= @container.supermarket %></h2>
+          <% end %>
+          </div>
+
           <p>Where? <%= @container.address %><p>
             <p>Which Products? <%= @container.product_category %><p>
               <p>About the Container: <%= @container.description %><p>
