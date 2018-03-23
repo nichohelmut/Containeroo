@@ -9,9 +9,15 @@ data-markers="<%= @markers.to_json %>"
   <div class="row">
     <div class="col-xs-12">
       <div class="show-titles">
-        <div>
+
+          <div>
+          <% if @container.supermarket == "Restaurant" %>
+          <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
+          <% else @container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
           <h2> <%= image_tag "supermarket.png", height: 80 %><%= @container.supermarket %></h2>
+          <% end %>
           </div>
+
           <div>
             <p><%= image_tag "where.png", height: 80 %>
             <%= @container.address %><p>
@@ -30,7 +36,7 @@ data-markers="<%= @markers.to_json %>"
           <p><%= @container.description %><p>
       </div>
     </div>
-  </div>
+</div>
     <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
 
 
