@@ -19,6 +19,7 @@ gem 'webpacker'
 gem "geocoder"
 gem "pundit"
 gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
 
 
 group :development do

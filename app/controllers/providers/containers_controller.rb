@@ -54,7 +54,7 @@ class Providers::ContainersController < ApplicationController
 
   private
   def container_params
-    params.require(:container).permit(:address, :description, :supermarket, :user, :product_category)
+    params.require(:container).permit(:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache)
     #authorize @container
   end
 end
