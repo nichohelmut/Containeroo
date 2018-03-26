@@ -7,10 +7,8 @@ data-markers="<%= @markers.to_json %>"
 
 <div class="container">
   <div class="row">
-      <div class="col-xs-12">
-        <div class="show-titles">
-          <%# image_tag @container.picture %>
-
+    <div class="col-xs-12">
+      <div class="show-titles">
           <div>
             <% if @container.supermarket == "Restaurant" %>
             <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
@@ -20,15 +18,14 @@ data-markers="<%= @markers.to_json %>"
           </div>
           <div>
           <p><%= image_tag "where.png", height: 80 %> <%= @container.address %><p>
-            </div>
-            <div>
-            <p><%= image_tag "food.png", height: 80 %> <%= @container.product_category %><p>
-            </div>
-            </div>
           </div>
-        </div>
-
+          <div>
+            <p><%= image_tag "food.png", height: 80 %> <%= @container.product_category %><p>
+          </div>
       </div>
+    </div>
+  </div>
+</div>
 
       <div class="row">
         <div class="col-xs-12">
@@ -38,7 +35,7 @@ data-markers="<%= @markers.to_json %>"
             <p><%= @container.description %><p>
             </div>
           </div>
-        </div>
+      </div>
 
 
         <%= simple_form_for Visit.new, url: customers_container_visits_path(@container) do |f| %>
