@@ -1,26 +1,25 @@
 <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
 <h2> <%= image_tag "mail.png", height: 40 %>     <%= @user.email %></h2>
-
-
-
 <div class="container">
   <h2> All the fridges <%= @user.first_name%> shared:</h2>
   <% @user.containers.each do |container| %>
-  <div class="unit">
-  <!-- <h2> <%= container.supermarket %></h2> -->
-    <% if container.supermarket == "Restaurant" %>
-    <h2> <%= image_tag "restaurant.png", height: 80 %><%= container.supermarket %></h2>
-    <% else container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
-    <h2> <%= image_tag "supermarket.png", height: 80 %><%= container.supermarket %></h2>
-    <% end %>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1488931455034-842396c062af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=441549b335b69c1b51d583669b447aa6&auto=format&fit=crop&w=1353&q=80');">
 
-    <p><%= image_tag "where.png", height: 80 %><%= container.address %></p>
-    <p><%= image_tag "clean.png", height: 80 %>n <%= container.description %> </p>
-    <% if policy(container).destroy? %>
-    <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
-    <% end %>
+    <div class="unit">
+      <% if container.supermarket == "Restaurant" %>
+      <h2> <%= image_tag "restaurant_white.png", height: 80 %><%= container.supermarket %></h2>
+      <% else container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
+      <h2><%= image_tag "supermarket_white.png", height: 80 %><%= container.supermarket %></h2>
+      <% end %>
+
+      <%= image_tag "where_white.png", height: 80 %><p><%= container.address %></p>
+      <%= image_tag "clean_white.png", height: 80 %><p> <%= container.description %> </p>
+      <% if policy(container).destroy? %>
+      <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
+      <% end %>
+    </div>
   </div>
-    <% end %>
-</div>
+      <% end %>
 
-<%= link_to "Go Back to See all Containers", providers_containers_path %>
+  <%= link_to "Go Back to See all Containers", providers_containers_path %>
+</div>

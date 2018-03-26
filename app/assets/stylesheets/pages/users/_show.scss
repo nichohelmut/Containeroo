@@ -1,5 +1,17 @@
 .unit {
-  border-style: solid;
   opacity: 0.8;
   align-items: start;
+  display: flex;
+}
+
+.unit h2 {
+  color: white;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.unit p {
+  color: white;
+  text-align: left;
+  vertical-align: middle;
 }
