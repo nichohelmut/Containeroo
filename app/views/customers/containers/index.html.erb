@@ -1,20 +1,36 @@
 <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
+id="map"
+style="width: 100%;
+height: 600px;"
+data-markers="<%= @markers.to_json %>"
 ></div>
 
- <%= simple_form_for Container.new, url: customers_containers_path, method: :get do |f| %>
-    <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
-    <%= f.submit "submit" %>
-    <% end %>
+<div class="container">
 
-<% @containers.each do |container| %>
-  <%= container.picture %>
-  <h1>Supermarket: <%= link_to container.supermarket, customers_container_path(container) %></h1>
-  <p>Where? <%= container.address %><p>
-  <p>Which Products? <%= container.product_category %><p>
-  <p>About the Container: <%= container.description %><p>
-  <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
-<% end %>
+   <%= simple_form_for Container.new, url: customers_containers_path, method: :get do |f| %>
+   <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
+   <%= f.submit "submit" %>
+   <% end %>
+
+  <div class="row">
+  <% @containers.each do |container| %>
+  <div class="col-xs-12 col-sm-4">
+
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,2600,0.3), rgba(0,0,260,0.2)), url('https://images.unsplash.com/photo-1488931455034-842396c062af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=441549b335b69c1b51d583669b447aa6&auto=format&fit=crop&w=1353&q=80');">
+      <div class="card-description">
+        <div class="card-category">
+         <%# container.picture %>
+        <h2>Location: <%= link_to container.supermarket, customers_container_path(container) %></h2></div>
+        <p><%= container.address %><p>
+        <p>Products: <%= container.product_category %><p>
+        <p>About the Container: <%= container.description %><p>
+        <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
+
+</div>
+</div>
