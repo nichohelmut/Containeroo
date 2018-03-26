@@ -5,7 +5,7 @@
       <%= f.input :supermarket, label: "Location", collection: %w(Restaurant Edeka Aldi Real Metro Lidl Spar Netto Plus TanteEmma) %>
       <%= f.input :address %>
       <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
-      <%= f.input :description %>
+      <%= f.input :description, :input_html => {:size => 100, :maxlength => 60}, placeholder: "max. 60 Characters" %>
       <%= f.button :submit %>
       <% end %>
 

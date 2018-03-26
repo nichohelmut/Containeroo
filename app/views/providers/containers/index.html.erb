@@ -1,16 +1,29 @@
 <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
+id="map"
+style="width: 100%;
+height: 600px;"
+data-markers="<%= @markers.to_json %>"
 ></div>
 
-<% @containers.each do |container| %>
-  <h1>Supermarket: <%= container.supermarket %></h1>
-  <%# image_tag container.picture, height: 400, width: 400, crop: :fit %>
-  <p>Where? <%= container.address %><p>
-  <p>Which Products? <%= container.product_category %><p>
-  <p>About the Container: <%= container.description %><p>
-  <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
-<% end %>
+
+<div class="container">
+  <div class="row">
+    <% @containers.each do |container| %>
+    <div class="col-xs-12 col-sm-4">
+
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+        <div class="card-description">
+          <div class="card-category"><h2><%= container.supermarket %></h2></div>
+          <%# image_tag container.picture, height: 400, width: 400, crop: :fit %>
+          <p><%= container.address %></p>
+          <p>Products: <%= container.product_category %><p>
+          <p>About: <%= container.description %><p>
+          <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
 
