@@ -1,10 +1,7 @@
 class Providers::ContainersController < ApplicationController
-  #skip_before_action :authenticate_user!, only: [:index, :show]
-  #before_action :authorize, :only => [:edit, :destroy]
   before_action :authenticate_user!
   def index
-    #@container = Container.find(params[:id])
-    #@container = Container.new(container_params)
+
     @containers = policy_scope(Container).order(created_at: :desc)
     @containers = Container.where.not(latitude: nil, longitude: nil)
 
@@ -30,11 +27,9 @@ class Providers::ContainersController < ApplicationController
 
   def new
     @container = Container.new
-    #@user = User.find(params[:id])
     authorize @container
   end
   def create
-    #@user = User.find(params[:id])
     @container = Container.create(container_params)
     @container.user = current_user
     @container.save
@@ -57,7 +52,6 @@ class Providers::ContainersController < ApplicationController
   private
   def container_params
     params.require(:container).permit(:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache)
-    #authorize @container
   end
 end
 
