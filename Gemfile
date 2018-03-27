@@ -18,8 +18,8 @@ gem 'uglifier'
 gem 'webpacker'
 gem "geocoder"
 gem "pundit"
+gem 'carrierwave'
 gem 'cloudinary'
-gem 'carrierwave', '~> 0.11.2'
 
 
 group :development do

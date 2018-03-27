@@ -3,6 +3,8 @@ class Providers::ContainersController < ApplicationController
   #before_action :authorize, :only => [:edit, :destroy]
   before_action :authenticate_user!
   def index
+    #@container = Container.find(params[:id])
+    #@container = Container.new(container_params)
     @containers = policy_scope(Container).order(created_at: :desc)
     @containers = Container.where.not(latitude: nil, longitude: nil)
 
