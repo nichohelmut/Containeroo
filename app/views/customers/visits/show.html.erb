@@ -9,32 +9,32 @@ data-markers="<%= @markers.to_json %>"
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%=cl_image_path @container.photo unless @container.photo.blank? %>);">
   <div class="card-category">
     <h2>Good Luck</h2>
-   <div>
-    <% if @visit.container.supermarket == "Restaurant" %>
-    <h2> <%= image_tag "restaurant.png", height: 80 %><%= @visit.container.supermarket %></h2>
-    <% else @visit.container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
-    <h2> <%= image_tag "supermarket.png", height: 80 %><%= @visit.container.supermarket %></h2>
-    <% end %>
-  </div>
-
-
-</div>
-<div class="card-description">
-  <div>
-    <p><%= image_tag "where.png", height: 80 %>
-      <%= @visit.container.address %><p>
-    </div>
     <div>
-      <p><%= image_tag "food.png", height: 80 %> <%= @visit.container.product_category %><p>
+      <% if @visit.container.supermarket == "Restaurant" %>
+      <h2> <%= image_tag "restaurant.png", height: 80 %><%= @visit.container.supermarket %></h2>
+      <% else @visit.container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
+      <h2> <%= image_tag "supermarket.png", height: 80 %><%= @visit.container.supermarket %></h2>
+      <% end %>
     </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="description">
-      <div class="clean"> <%= image_tag "clean.png", height: 80 %>
+
+
+  </div>
+  <div class="card-description">
+    <div>
+      <p><%= image_tag "where.png", height: 80 %>
+        <%= @visit.container.address %><p>
+    </div>
+      <div>
+        <p><%= image_tag "food.png", height: 80 %> <%= @visit.container.product_category %><p>
       </div>
-          <p><%= @visit.container.description %><p>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="description">
+            <div class="clean"> <%= image_tag "clean.png", height: 80 %>
+            </div>
+            <p><%= @visit.container.description %><p>
+          </div>
         </div>
       </div>
 </div>
