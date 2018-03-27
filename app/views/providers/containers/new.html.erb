@@ -6,6 +6,8 @@
       <%= f.input :address %>
       <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
       <%= f.input :description, :input_html => {:size => 100, :maxlength => 60}, placeholder: "max. 60 Characters" %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
       <%= f.button :submit %>
       <% end %>
 
