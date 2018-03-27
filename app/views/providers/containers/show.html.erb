@@ -37,6 +37,7 @@ data-markers="<%= @markers.to_json %>"
       </div>
     </div>
 </div>
+<%= cl_image_tag @container.photo, height: 300, width: 400, crop: :fill %>
     <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
 
 
