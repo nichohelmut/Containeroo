@@ -14,18 +14,16 @@ data-markers="<%= @markers.to_json %>"
       <div class="card" style="background-image: linear-gradient(rgba(0,0,2600,0.3),rgba(0,0,260,0.2)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)">
         <div class="card-description">
           <div class="card-category">
-            <h2><%= container.supermarket %></h2></div>
-          <%# image_tag container.photo, height: 400, width: 400, crop: :fit %>
+            <h2><%= link_to container.supermarket, customers_container_path(container) %></h2></div>
 
           <p><%= container.address %></p>
           <p>Products: <%= container.product_category %><p>
-          <p>About: <%= container.description %><p>
           <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
-            </div>
-          </div>
         </div>
-        <% end %>
       </div>
     </div>
+      <% end %>
+  </div>
+</div>
 
 
