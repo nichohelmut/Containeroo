@@ -8,7 +8,9 @@ data-markers="<%= @markers.to_json %>"
 
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%=cl_image_path @container.photo unless @container.photo.blank? %>);">
   <div class="card-category">
-    <h2>Good Luck</h2>
+    <div class="luck">
+    <h2>Enjoy</h2>
+    </div>
     <div>
       <% if @visit.container.supermarket == "Restaurant" %>
       <h2> <%= image_tag "restaurant.png", height: 80 %><%= @visit.container.supermarket %></h2>

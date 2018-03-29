@@ -14,29 +14,27 @@ data-markers="<%= @markers.to_json %>"
     <h2> <%= image_tag "supermarket.png", height: 80 %><%= @container.supermarket %></h2>
     <% end %>
   </div>
+  </div>
 
-
-</div>
-<div class="card-description">
-  <div>
-    <p><%= image_tag "where.png", height: 80 %>
-      <%= @container.address %><p>
+  <div class="card-description">
+    <div>
+      <p><%= image_tag "where.png", height: 80 %><%= @container.address %><p>
     </div>
     <div>
       <p><%= image_tag "food.png", height: 80 %> <%= @container.product_category %><p>
     </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="description">
-      <div class="clean"> <%= image_tag "clean.png", height: 80 %>
-      </div>
-          <p><%= @container.description %><p>
     </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="description">
+          <div class="clean"> <%= image_tag "clean.png", height: 80 %>
+          </div>
+            <p><%= @container.description %><p>
         </div>
       </div>
+    </div>
 </div>
-        <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
+      <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
 
 
 
