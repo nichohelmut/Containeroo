@@ -16,7 +16,7 @@ data-markers="<%= @markers.to_json %>"
   <% @containers.each do |container| %>
   <div class="col-xs-12 col-sm-4">
 
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,2600,0.3), rgba(0,0,260,0.2)), url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>);">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,260,0.3), rgba(0,0,260,0.2)), url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>);">
       <div class="card-description">
         <div class="card-category">
         <h2>Location: <%= link_to container.supermarket, customers_container_path(container) %></h2></div>
