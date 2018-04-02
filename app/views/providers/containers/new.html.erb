@@ -3,7 +3,12 @@
     <div class="col-sm-offset-4 col-sm-4">
       <%= simple_form_for @container, url: providers_containers_path  do |f| %>
       <%= f.input :supermarket, label: "Location", collection: %w(Restaurant Edeka Aldi Real Metro Lidl Spar Netto Plus TanteEmma) %>
-      <%= f.input :address %>
+      <%= f.input :address, as: :string, id: "address"%>
+    <!--   <form id="searchForm">
+        <input type="text" id="address" class="form-control" placeholder="Type an address">
+        <input type="submit" value="Geocode!" class="btn btn-default">
+      </form> -->
+
       <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
       <%= f.input :description, :input_html => {:size => 100, :maxlength => 160}, placeholder: "max. 160 Characters" %>
       <%= f.input :photo %>
@@ -17,3 +22,4 @@
     </div>
   </div>
 </div>
+
