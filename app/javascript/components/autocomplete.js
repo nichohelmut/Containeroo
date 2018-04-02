@@ -1,6 +1,6 @@
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function() {
-    var containerAddress = document.getElementById("container_address");
+    var containerAddress = document.getElementById("address");
 
     if (containerAddress) {
       var autocomplete = new google.maps.places.Autocomplete(containerAddress, { types: [ 'geocode' ] });
@@ -12,5 +12,6 @@ function autocomplete() {
     }
   });
 }
+// debugger
+export {autocomplete};
 
-export { autocomplete };

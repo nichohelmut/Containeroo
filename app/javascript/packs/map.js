@@ -1,5 +1,5 @@
 import GMaps from 'gmaps/gmaps';
-import { autocomplete } from '../components/autocomplete';
+import { autocomplete } from 'components/autocomplete';
 
 const mapElement = document.getElementById('map');
 const markers = JSON.parse(mapElement.dataset.markers);
