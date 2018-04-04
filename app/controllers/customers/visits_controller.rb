@@ -16,7 +16,7 @@ class Customers::VisitsController < ApplicationController
   [{
     lat: @visit.container.latitude,
     lng: @visit.container.longitude,
-    icon: '/toilet-marker.png',
+    icon: image_url('logo.png'),
     draggable: false
     }]
     authorize @visit
