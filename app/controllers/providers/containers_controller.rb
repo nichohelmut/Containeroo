@@ -19,7 +19,7 @@ class Providers::ContainersController < ApplicationController
     [{
       lat: @container.latitude,
       lng: @container.longitude,
-      icon: '/toilet-marker.png',
+      icon: '/logo.png',
       draggable: false
       }]
       authorize @container
