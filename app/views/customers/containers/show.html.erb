@@ -5,7 +5,7 @@ height: 400px;"
 data-markers="<%= @markers.to_json %>"
 ></div>
 
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%=cl_image_path @container.photo unless @container.photo.blank? %>);">
+<div class="card" style="background-image: linear-gradient(rgba(42,42,44,.7), rgba(42,42,44,.7)), url(<%=cl_image_path @container.photo unless @container.photo.blank? %>);">
   <div class="card-category">
     <div>
       <% if @container.supermarket == "Restaurant" %>

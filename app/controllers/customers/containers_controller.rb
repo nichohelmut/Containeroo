@@ -18,19 +18,34 @@ class Customers::ContainersController < ApplicationController
       {
         lat: container.latitude,
       lng: container.longitude#,
+
     }
     end
 
 
-    # @users = User.where.not(latitude: nil, longitude: nil)
 
-
-    # @markers = @users.map do |user|
-    #   {
-    #     lat: user.latitude,
-    #     lng: user.longitude#,
-    #   }
+    @users = policy_scope(User)
+    @user = User.new
+    @users = User.where.not(latitude: nil, longitude: nil)
+    # if params[:user]
+    #   @user = User.new(user_params)
+    #   user_params.each do |key, value|
+    #     if key == "address" && value != ""
+    #       @users = @users.where('address = ?', "#{value}")
+    #     end
+    #   end
     # end
+
+    @user_markers = @users.map do |user|
+      {
+        lat: user.latitude,
+      lng: user.longitude#,
+
+    }
+    end
+
+
+
   end
 
   def show
@@ -63,5 +78,9 @@ class Customers::ContainersController < ApplicationController
   private
   def container_params
     params.require(:container).permit(:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache)
+  end
+  def user_params
+    params.require(:user).permit([:first_name, :last_name, :email, :address])
+    # authorize @user
   end
 end
