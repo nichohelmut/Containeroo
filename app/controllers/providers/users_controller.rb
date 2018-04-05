@@ -9,6 +9,7 @@ class Providers::UsersController < ApplicationController
     @user = User.new
     authorize @user
   end
+
   def create
     @user = User.create(user_params)
     @user.save
@@ -16,19 +17,15 @@ class Providers::UsersController < ApplicationController
     authorize @user
   end
 
-
   def destroy
     @container = Container.find(params[:container_id])
     @container.destroy
     redirect_to providers_container_user_path
   end
 
-
-
   private
   def user_params
     params.require(:user).permit([:first_name, :last_name, :email])
     authorize @user
-
   end
 end
