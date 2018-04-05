@@ -4,7 +4,6 @@ class Providers::ContainersController < ApplicationController
 
     @containers = policy_scope(Container).order(created_at: :desc)
     @containers = Container.where.not(latitude: nil, longitude: nil)
-
     @markers = @containers.map do |container|
       {
         lat: container.latitude,
@@ -23,12 +22,13 @@ class Providers::ContainersController < ApplicationController
       draggable: false
       }]
       authorize @container
-    end
+  end
 
   def new
     @container = Container.new
     authorize @container
   end
+
   def create
     @container = Container.create(container_params)
     @container.user = current_user
@@ -38,7 +38,6 @@ class Providers::ContainersController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy

@@ -7,13 +7,13 @@ data-markers="<%= @markers.to_json %>"
 
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%=cl_image_path @container.photo unless @container.photo.blank? %>);">
   <div class="card-category">
-   <div>
-    <% if @container.supermarket == "Restaurant" %>
-    <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
-    <% else @container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
-    <h2> <%= image_tag "supermarket.png", height: 80 %><%= @container.supermarket %></h2>
-    <% end %>
-  </div>
+    <div>
+      <% if @container.supermarket == "Restaurant" %>
+        <h2> <%= image_tag "restaurant.png", height: 80 %><%= @container.supermarket %></h2>
+      <% else @container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
+        <h2> <%= image_tag "supermarket.png", height: 80 %><%= @container.supermarket %></h2>
+      <% end %>
+    </div>
   </div>
 
   <div class="card-description">
@@ -23,18 +23,19 @@ data-markers="<%= @markers.to_json %>"
     <div>
       <p><%= image_tag "food.png", height: 80 %> <%= @container.product_category %><p>
     </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="description">
-          <div class="clean"> <%= image_tag "clean.png", height: 80 %>
-          </div>
-            <p><%= @container.description %><p>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="description">
+        <div class="clean"> <%= image_tag "clean.png", height: 80 %>
         </div>
+        <p><%= @container.description %><p>
       </div>
     </div>
+  </div>
 </div>
-      <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
+
+<%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
 
 
 

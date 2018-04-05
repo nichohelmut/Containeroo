@@ -22,9 +22,6 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     })
   });
 
-
-
-
   // var infoWindow = new google.maps.infoWindow({
   //   content: "<h1> Hello</h1>"
   // });

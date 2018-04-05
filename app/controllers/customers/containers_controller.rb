@@ -15,25 +15,35 @@ class Customers::ContainersController < ApplicationController
     end
 
     @markers = @containers.map do |container|
-        {
-      lat: container.latitude,
+      {
+        lat: container.latitude,
       lng: container.longitude#,
-        }
+    }
     end
 
+
+    # @users = User.where.not(latitude: nil, longitude: nil)
+
+
+    # @markers = @users.map do |user|
+    #   {
+    #     lat: user.latitude,
+    #     lng: user.longitude#,
+    #   }
+    # end
   end
 
   def show
     @container = Container.find(params[:id])
-  #@visit = Visit.where(user: current_user, container: @container).first
-  @container = Container.find(params[:id])
-  @markers =
-  [{
-    lat: @container.latitude,
-    lng: @container.longitude,
-    icon: '/logo.png',
-    draggable: false
-    }]
+    #@visit = Visit.where(user: current_user, container: @container).first
+    @container = Container.find(params[:id])
+    @markers =
+    [{
+      lat: @container.latitude,
+      lng: @container.longitude,
+      icon: '/logo.png',
+      draggable: false
+      }]
     @visit = Visit.new
     authorize @container
   end

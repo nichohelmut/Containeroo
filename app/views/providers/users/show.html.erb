@@ -4,18 +4,16 @@
   <h2> All the fridges <%= @user.first_name%> shared:</h2>
   <% @user.containers.each do |container| %>
   <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,260,0.2)), url(<%=cl_image_path container.photo unless container.photo.blank? %>);">
-
     <div class="unit">
       <% if container.supermarket == "Restaurant" %>
-      <h2> <%= image_tag "restaurant_white.png", height: 80 %><%= container.supermarket %></h2>
+        <h2> <%= image_tag "restaurant_white.png", height: 80 %><%= container.supermarket %></h2>
       <% else container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
-      <h2><%= image_tag "supermarket_white.png", height: 80 %><%= container.supermarket %></h2>
+        <h2><%= image_tag "supermarket_white.png", height: 80 %><%= container.supermarket %></h2>
       <% end %>
-
       <%= image_tag "where_white.png", height: 80 %><p><%= container.address %></p>
       <%= image_tag "clean_white.png", height: 80 %><p> <%= container.description %> </p>
       <% if policy(container).destroy? %>
-      <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
+        <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
       <% end %>
     </div>
   </div>

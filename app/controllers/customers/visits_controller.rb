@@ -1,17 +1,16 @@
 class Customers::VisitsController < ApplicationController
   before_action :set_container
+
   def index
     @visits = policy_scope(Visit).order(created_at: :desc)
   end
 
   def show
-
     #@user = User.find(params[:user_id])
     @visit = Visit.find(params[:id])
     @container = @visit.container
-
-  #@visit = Visit.where(user: current_user, container: @container).first
-  #@visit.container = Container.find(params[:id])
+    #@visit = Visit.where(user: current_user, container: @container).first
+    #@visit.container = Container.find(params[:id])
   @markers =
   [{
     lat: @visit.container.latitude,
@@ -41,10 +40,9 @@ class Customers::VisitsController < ApplicationController
 
   def set_container
     @container = Container.find(params[:container_id])
-
   end
+
   def visit_params
     params.require(:visit).permit(:user, :container_id)
-
   end
 end
