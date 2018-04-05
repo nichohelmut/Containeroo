@@ -10,6 +10,20 @@ class Providers::ContainersController < ApplicationController
         lng: container.longitude
       }
     end
+
+    @users = policy_scope(User)
+    @user = User.new
+    @users = User.where.not(latitude: nil, longitude: nil)
+
+    @user_markers = @users.map do |user|
+      {
+        lat: user.latitude,
+      lng: user.longitude#,
+
+    }
+  end
+
+
   end
 
   def show
@@ -21,6 +35,17 @@ class Providers::ContainersController < ApplicationController
       icon: '/logo.png',
       draggable: false
       }]
+       @users = policy_scope(User)
+    @user = User.new
+    @users = User.where.not(latitude: nil, longitude: nil)
+
+    @user_markers = @users.map do |user|
+      {
+        lat: user.latitude,
+      lng: user.longitude#,
+
+    }
+  end
       authorize @container
   end
 

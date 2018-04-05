@@ -9,12 +9,12 @@
 Container.destroy_all
 User.destroy_all
 
-User.create(first_name: "Hans", last_name: "müller", email:"hans@gmail.com", password: 123456, address: "wedding, berlin")
-User.create(first_name: "Max", last_name: "meier", email:"max@gmail.com", password: 123456, address: "kreuzberg, berlin" )
-User.create(first_name: "Jim", last_name: "Kennedy", email:"jim@gmail.com", password: 123456, address: "moabit, berlin" )
-User.create(first_name: "Nicholas", last_name: "Utikal", email:"nicholasutikal@gmail.com", password: 123456, address: "mitte, berlin" )
-User.create(first_name: "Markus", last_name: "Haag", email:"markus@gmail.com", password: 123456, address: "ostbahnhof, berlin" )
-User.create(first_name: "Peter", last_name: "Tänzer", email:"peter@gmail.com", password: 123456, address: "steglitz, berlin" )
+User.create(first_name: "Hans", last_name: "müller", email:"hans@gmail.com", password: 123456)
+User.create(first_name: "Max", last_name: "meier", email:"max@gmail.com", password: 123456)
+User.create(first_name: "Jim", last_name: "Kennedy", email:"jim@gmail.com", password: 123456)
+User.create(first_name: "Nicholas", last_name: "Utikal", email:"nicholasutikal@gmail.com", password: 123456)
+User.create(first_name: "Markus", last_name: "Haag", email:"markus@gmail.com", password: 123456)
+User.create(first_name: "Peter", last_name: "Tänzer", email:"peter@gmail.com", password: 123456)
 
 
 url = "https://piximus.net/media2/41297/restaurant-leaves-fridge-in-the-street-with-a-special-surprise-1.jpg"
