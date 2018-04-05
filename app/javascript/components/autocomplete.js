@@ -2,10 +2,8 @@ function onPlaceChanged() {
   var place = this.getPlace();
 
   var containerAddress = document.getElementById('container_address');
-  containerAddress.blur();
 
   var userAddress = document.getElementById('user_address');
-  user_address.blur();
 }
 
 document.addEventListener("DOMContentLoaded", function() {

@@ -15,9 +15,27 @@ class Customers::VisitsController < ApplicationController
   [{
     lat: @visit.container.latitude,
     lng: @visit.container.longitude,
-    icon: image_url('logo.png'),
-    draggable: false
     }]
+
+    @users = policy_scope(User)
+    @user = User.new
+    @users = User.where.not(latitude: nil, longitude: nil)
+    # if params[:user]
+    #   @user = User.new(user_params)
+    #   user_params.each do |key, value|
+    #     if key == "address" && value != ""
+    #       @users = @users.where('address = ?', "#{value}")
+    #     end
+    #   end
+    # end
+
+    @user_markers = @users.map do |user|
+      {
+        lat: user.latitude,
+      lng: user.longitude#,
+
+    }
+    end
     authorize @visit
   end
 

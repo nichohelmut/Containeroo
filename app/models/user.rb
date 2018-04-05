@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :containers, dependent: :destroy
   #accepts_nested_attributes_for :containers
   has_many :visits, dependent: :destroy
-  validates :first_name, presence: true
+  # validates :first_name, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
