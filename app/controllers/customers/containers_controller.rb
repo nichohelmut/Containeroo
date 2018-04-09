@@ -11,6 +11,7 @@ class Customers::ContainersController < ApplicationController
         if key == "product_category" && value != ""
           @containers = @containers.where('product_category = ?', "#{value}")
         end
+
       end
     end
 
@@ -27,13 +28,12 @@ class Customers::ContainersController < ApplicationController
     if params[:user]
       @user = User.new(user_params)
       user_params.each do |key, value|
-        if key == "address" && value != ""
-          @users = @users.where('address = ?', "#{value}")
+        key == "address" && value != ""
         end
       end
       @user.save
 
-    end
+
 
     @user_markers = @users.map do |user|
       {
@@ -42,9 +42,6 @@ class Customers::ContainersController < ApplicationController
 
     }
     end
-
-
-
   end
 
   def show
@@ -76,12 +73,12 @@ class Customers::ContainersController < ApplicationController
 
   private
   def container_params
-    params.require(:container).permit(:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache)
+    params.require(:container).permit([:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache])
   end
 
 
   def user_params
-    params.require(:user).permit([:address])
+    params.require(:user).permit([:address, :first_name, :last_name, :password, :password_confirmation])
     # authorize @user
   end
 end
