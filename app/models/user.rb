@@ -9,5 +9,7 @@ class User < ApplicationRecord
   # validates :first_name, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  validates :email, presence: false, :allow_blank => true
 
+after_validation :reverse_geocode
 end

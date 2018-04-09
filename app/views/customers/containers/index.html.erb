@@ -1,7 +1,7 @@
 <div
 id="map"
 style="width: 100%;
-height: 600px;"
+height: 400px;"
 data-markers="<%= @markers.to_json %>"
 data-user_markers="<%= @user_markers.to_json %>"
 
@@ -11,13 +11,20 @@ data-user_markers="<%= @user_markers.to_json %>"
 
 
   <%= simple_form_for User.new, url: customers_containers_path, method: :get do |f| %>
-  <%= f.input :address %>
+  <%= f.input :address, input_html: {id: "user_address"} %>
+  <%= f.input :first_name, as: :hidden, autofocus: true, input_html: { value:  "mikkel" } %>
+  <%= f.input :last_name, as: :hidden,  autofocus: true , input_html: { value:  "angelo" }%>
+  <%# f.input :email, as: :hidden, autofocus: true , input_html: { value:  "adsada(0..8).map{(‘a’..’z’).to_a[rand(26)]}.join@y22opmail.com" }%>
+  <%= f.input :password, as: :hidden, input_html: { value:  123456 } %>
+  <%= f.input :password_confirmation, as: :hidden, input_html: { value:  123456 }%>
   <%= f.submit "submit" %>
   <% end %>
 
 
   <%= simple_form_for Container.new, url: customers_containers_path, method: :get do |f| %>
   <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
+    <%# f.input :address, input_html: {id: "user_address"} %>
+
   <%= f.submit "submit" %>
   <% end %>
 

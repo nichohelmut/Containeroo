@@ -33,9 +33,6 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     })
   });
 
-
-
-
   if (markers.length === 0) {
     map.setZoom(2);
   } else if (markers.length === 1) {
@@ -55,18 +52,15 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     })
   });
 
-
-
-
-  // if (user_markers.length === 0) {
-  //   map.setZoom(4);
-  // } else if (user_markers.length === 1) {
-  //   map.setCenter(user.markers[0].lat, user_markers[0].lng);
-  //   //console.log(map.setZoom(14));
-  //   map.setZoom(14);
-  // } else {
-  //   map.fitLatLngBounds(user_markers);
-  // }
+  if (user_markers.length === 0) {
+    map.setZoom(4);
+  } else if (user_markers.length === 1) {
+    map.setCenter(user_markers[0].lat, user_markers[0].lng);
+    //console.log(map.setZoom(14));
+    map.setZoom(14);
+  } else {
+    map.fitLatLngBounds(user_markers);
+  }
 
 }
 
