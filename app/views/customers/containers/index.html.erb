@@ -14,7 +14,7 @@ data-user_markers="<%= @user_markers.to_json %>"
   <%= f.input :address, input_html: {id: "user_address"} %>
   <%= f.input :first_name, as: :hidden, autofocus: true, input_html: { value:  "mikkel" } %>
   <%= f.input :last_name, as: :hidden,  autofocus: true , input_html: { value:  "angelo" }%>
-  <%# f.input :email, as: :hidden, autofocus: true , input_html: { value:  "adsada(0..8).map{(‘a’..’z’).to_a[rand(26)]}.join@y22opmail.com" }%>
+  <%= f.input :email, as: :hidden, autofocus: true , input_html: { value:   [[('a'..'z').to_a[rand(26)]], '@email.com'].join   } %>
   <%= f.input :password, as: :hidden, input_html: { value:  123456 } %>
   <%= f.input :password_confirmation, as: :hidden, input_html: { value:  123456 }%>
   <%= f.submit "submit" %>

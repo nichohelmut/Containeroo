@@ -78,7 +78,7 @@ class Customers::ContainersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit([:address, :first_name, :last_name, :password, :password_confirmation])
+    params.require(:user).permit([:address, :first_name, :email, :last_name, :password, :password_confirmation])
     # authorize @user
   end
 end

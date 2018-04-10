@@ -12,4 +12,11 @@
   padding: 20px;
   opacity: 0.8;
   margin: 10px;
+  border-radius: 10px;
+}
+
+.btn-submit:active, p:active {
+  background-color: white;
+  border: black solid;
+  color: black;
 }
