@@ -37,6 +37,7 @@ data-user_markers="<%= @user_markers.to_json %>"
   </div>
 </div>
 
+
 <%= simple_form_for Visit.new, url: customers_container_visits_path(@container) do |f| %>
 <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
 <%= f.submit "Visit?", class: "btn-submit" %>

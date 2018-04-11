@@ -28,19 +28,28 @@ data-user_markers="<%= @user_markers.to_json %>"
   <%= f.submit "submit" %>
   <% end %>
 
-  <div class="row">
-    <% @containers.each do |container| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(42,42,44,.7), rgba(42,42,44,.7)), url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>);">
-          <div class="card-description">
-            <div class="card-category">
-            <h2>Location: <%= link_to container.supermarket, customers_container_path(container) %></h2></div>
-            <p><%= container.address %><p>
+
+
+<ul class="cards">
+<% @containers.each do |container| %>
+  <li class="cards__item">
+    <div class="card">
+      <%= link_to customers_container_path(container) do %>
+      <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)"></div>
+      <% end %>
+      <div class="card__content">
+        <div class="card__title">  <h2> <%=container.supermarket %></h2></div>
+        <p class="card__text"><p><%= container.address %><p>
             <p>Products: <%= container.product_category %><p>
             <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
-          </div>
-        </div>
+        <button class="btn btn--block card__btn">Button</button>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+  </li>
+
+<% end %>
+</ul>
+
+
+
+
