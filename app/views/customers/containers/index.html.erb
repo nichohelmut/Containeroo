@@ -1,3 +1,5 @@
+
+
 <div
 id="map"
 style="width: 100%;
@@ -6,12 +8,10 @@ data-markers="<%= @markers.to_json %>"
 data-user_markers="<%= @user_markers.to_json %>"
 
 ></div>
-
-<div class="container">
-
-
+<div class="container-form">
+  <div class="address">
   <%= simple_form_for User.new, url: customers_containers_path, method: :get do |f| %>
-  <%= f.input :address, input_html: {id: "user_address"} %>
+  <%= f.input :address, input_html: {id: "user_address"}, placeholder: "Your Location?" %>
   <%= f.input :first_name, as: :hidden, autofocus: true, input_html: { value:  "mikkel" } %>
   <%= f.input :last_name, as: :hidden,  autofocus: true , input_html: { value:  "angelo" }%>
   <%= f.input :email, as: :hidden, autofocus: true , input_html: { value:   [[('a'..'z').to_a[rand(26)]], '@email.com'].join   } %>
@@ -19,36 +19,44 @@ data-user_markers="<%= @user_markers.to_json %>"
   <%= f.input :password_confirmation, as: :hidden, input_html: { value:  123456 }%>
   <%= f.submit "submit" %>
   <% end %>
-
+</div>
+<div class="product">
 
   <%= simple_form_for Container.new, url: customers_containers_path, method: :get do |f| %>
-  <%= f.input :product_category, collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
-    <%# f.input :address, input_html: {id: "user_address"} %>
+  <%= f.input :product_category , collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
+
 
   <%= f.submit "submit" %>
   <% end %>
+  </div>
 
+</div>
 
-
-<ul class="cards">
-<% @containers.each do |container| %>
-  <li class="cards__item">
-    <div class="card">
-      <%= link_to customers_container_path(container) do %>
-      <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)"></div>
-      <% end %>
-      <div class="card__content">
-        <div class="card__title">  <h2> <%=container.supermarket %></h2></div>
-        <p class="card__text"><p><%= container.address %><p>
+  <ul class="cards">
+    <% @containers.each do |container| %>
+    <li class="cards__item">
+      <div class="card">
+        <%# link_to customers_container_path(container) do %>
+        <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)"></div>
+        <%# end %>
+        <div class="card__content">
+          <div class="card__title">  <h2> <%=container.supermarket %></h2></div>
+          <p class="card__text"><p><%= container.address %><p>
             <p>Products: <%= container.product_category %><p>
-            <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
-        <button class="btn btn--block card__btn">Button</button>
-      </div>
-    </div>
-  </li>
+              <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
 
-<% end %>
-</ul>
+
+            <%= simple_form_for Visit.new, url: customers_container_visits_path(container) do |f| %>
+            <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
+            <%= f.submit "Visit?", class: "btn-submit" %>
+            </div>
+            <% end %>
+          </div>
+        </li>
+
+        <% end %>
+      </ul>
+
 
 
 

@@ -14,15 +14,16 @@ data-user_markers="<%= @user_markers.to_json %>"
 <% @containers.each do |container| %>
   <li class="cards__item">
     <div class="card">
-      <%= link_to customers_container_path(container) do %>
+      <%# link_to customers_container_path(container) do %>
       <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)"></div>
-      <% end %>
+      <%# end %>
       <div class="card__content">
         <div class="card__title">  <h2> <%=container.supermarket %></h2></div>
         <p class="card__text"><p><%= container.address %></p>
           <p>Products: <%= container.product_category %><p>
           <p>Posted by <%= container.user.first_name %> </p></p>
-        <button class="btn btn--block card__btn">Button</button>
+          <p><%= container.description  %></p>
+
       </div>
     </div>
   </li>

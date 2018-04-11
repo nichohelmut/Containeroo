@@ -8,38 +8,33 @@ data-user_markers="<%= @user_markers.to_json %>"
 ></div>
 
 
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(<%=cl_image_path @container.photo unless @container.photo.blank? %>);">
-  <div class="card-category">
-    <div class="luck">
-      <h2>Enjoy</h2>
-    </div>
-    <div>
-      <% if @visit.container.supermarket == "Restaurant" %>
-          <h2> <%= image_tag "restaurant.png", height: 80 %><%= @visit.container.supermarket %></h2>
-        <% else @visit.container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
-          <h2> <%= image_tag "supermarket.png", height: 80 %><%= @visit.container.supermarket %></h2>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="card-description">
-    <div>
-      <p><%= image_tag "where.png", height: 80 %>
-        <%= @visit.container.address %><p>
-    </div>
-    <div>
-      <p><%= image_tag "food.png", height: 80 %> <%= @visit.container.product_category %><p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="description">
-        <div class="clean"> <%= image_tag "clean.png", height: 80 %></div>
-          <p><%= @visit.container.description %><p>
+<ul class="cards">
+  <li class="cards__item">
+    <div class="card">
+      <%# link_to customers_container_path(container) do %>
+      <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(@container.photo, height: 300, width: 400, crop: :fill) unless @container.photo.blank? %>)"></div>
+      <%# end %>
+      <div class="card__content">
+        <div class="card__title">  <h2> Enjoy :) </h2>
+          </div>
+        <p class="card__text">
+          <p><%= @visit.container.supermarket %></p><p><%= @visit.container.address %></p>
+          <p>Products: <%= @visit.container.product_category %><p>
+          <p>Posted by <%= @visit.container.user.first_name %> </p></p>
+          <p><%= @visit.container.description  %></p>
+
       </div>
     </div>
-  </div>
-</div>
+  </li>
+
+</ul>
+
+
+
+
+
+
 
 
 

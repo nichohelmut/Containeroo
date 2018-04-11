@@ -1,23 +1,37 @@
 <h1><%= @user.first_name %>  <%= @user.last_name %></h1>
 <h2> <%= image_tag "mail.png", height: 40 %>     <%= @user.email %></h2>
-<div class="container">
-  <h2> All the fridges <%= @user.first_name%> shared:</h2>
+
+
+
+
+<ul class="cards">
   <% @user.containers.each do |container| %>
-  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,260,0.2)), url(<%=cl_image_path container.photo unless container.photo.blank? %>);">
-    <div class="unit">
-      <% if container.supermarket == "Restaurant" %>
-        <h2> <%= image_tag "restaurant_white.png", height: 80 %><%= container.supermarket %></h2>
-      <% else container.supermarket ==  "Aldi" || "Real" || "Metro" || "Lidl"|| "Spar" || "Netto" || "Plus" || "TanteEmma" %>
-        <h2><%= image_tag "supermarket_white.png", height: 80 %><%= container.supermarket %></h2>
-      <% end %>
-      <%= image_tag "where_white.png", height: 80 %><p><%= container.address %></p>
-      <%= image_tag "clean_white.png", height: 80 %><p> <%= container.description %> </p>
-      <% if policy(container).destroy? %>
+  <li class="cards__item">
+    <div class="card">
+      <%# link_to customers_container_path(container) do %>
+      <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)"></div>
+      <%# end %>
+      <div class="card__content">
+        <div class="card__title">  <h2> <%=container.supermarket %></h2></div>
+        <p class="card__text"><p><%= container.address %></p>
+          <p>Products: <%= container.product_category %><p>
+          <p>Posted by <%= container.user.first_name %> </p></p>
+          <p><%= container.description  %></p>
+
+
+    <% if policy(container).destroy? %>
         <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
       <% end %>
+      </div>
     </div>
-  </div>
-      <% end %>
+  </li>
 
-  <%= link_to "Go Back to See all Containers", customers_containers_path %>
-</div>
+<% end %>
+</ul>
+<%= link_to "Go Back to See all Containers", customers_containers_path %>
+
+
+
+
+
+
