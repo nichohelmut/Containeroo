@@ -8,6 +8,7 @@ data-markers="<%= @markers.to_json %>"
 data-user_markers="<%= @user_markers.to_json %>"
 
 ></div>
+
 <div class="container-form">
   <div class="address">
   <%= simple_form_for User.new, url: customers_containers_path, method: :get do |f| %>
@@ -44,8 +45,6 @@ data-user_markers="<%= @user_markers.to_json %>"
           <p class="card__text"><p><%= container.address %><p>
             <p>Products: <%= container.product_category %><p>
               <p>Posted by <%= link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id) %> </p>
-
-
             <%= simple_form_for Visit.new, url: customers_container_visits_path(container) do |f| %>
             <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
             <%= f.submit "Visit?", class: "btn-submit" %>
