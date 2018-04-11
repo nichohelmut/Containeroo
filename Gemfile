@@ -20,6 +20,9 @@ gem "geocoder"
 gem "pundit"
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
 
 
 group :development do

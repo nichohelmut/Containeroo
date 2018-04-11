@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
 end
   #resources :containers, only: [:new, :create,:index, :show]
-
+  mount Attachinary::Engine => "/attachinary"
 end
