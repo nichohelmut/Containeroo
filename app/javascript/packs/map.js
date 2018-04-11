@@ -1,6 +1,7 @@
 import GMaps from 'gmaps/gmaps';
 import { autocomplete } from 'components/autocomplete';
 
+
 // CONTAINER MARKERS
 var icon = {
     url: "https://image.flaticon.com/icons/svg/603/603401.svg", // url
@@ -29,19 +30,25 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     map.addMarker({
       lng: marker.lng,
       lat: marker.lat,
-      icon: icon
+      icon: icon,
     })
   });
 
+
+
+
   if (markers.length === 0) {
-    map.setZoom(17);
+    map.setZoom(2);
   } else if (markers.length === 1) {
     map.setCenter(markers[0].lat, markers[0].lng);
     //console.log(map.setZoom(14));
-    map.setZoom(2);
+    map.setZoom(14);
   } else {
     map.fitLatLngBounds(markers);
   }
+
+
+
 
   console.log(user_markers);
   user_markers.forEach(function(marker) {
@@ -52,12 +59,13 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     })
   });
 
+
   if (user_markers.length === 0) {
-    map.setZoom(17);
+    map.setZoom(2);
   } else if (user_markers.length === 1) {
     map.setCenter(user_markers[0].lat, user_markers[0].lng);
     //console.log(map.setZoom(14));
-    map.setZoom(2 );
+    map.setZoom(14 );
   } else {
     map.fitLatLngBounds(user_markers);
   }

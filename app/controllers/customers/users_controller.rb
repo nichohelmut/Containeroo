@@ -16,13 +16,11 @@ class Customers::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  #  def destroy
-  #   @container = Container.find(params[:id])
-  #   @container.user = @container
-  #   @container.destroy
-  #   redirect_to providers_container_path
+   def destroy
+    @user = User.where(first_name: "mikkel")
+    @user.destroy
 
-  # end
+  end
 
   private
   def user_params

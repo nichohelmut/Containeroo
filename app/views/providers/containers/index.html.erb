@@ -7,25 +7,25 @@ data-user_markers="<%= @user_markers.to_json %>"
 
 ></div>
 
-<div class="container">
-  <div class="row">
-    <% @containers.each do |container| %>
-    <div class="col-xs-12 col-sm-4">
-      <%= link_to customers_container_path(container) do %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,2600,0.3),rgba(0,0,260,0.2)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)">
-        <div class="card-description">
-          <div class="card-category">
-            <h2><%=container.supermarket %></h2>
-          </div>
-          <p><%= container.address %></p>
-          <p>Products: <%= container.product_category %><p>
-          <p>Posted by <%= container.user.first_name %> </p>
-        </div>
-      </div>
-      <% end %>
-    </div>
-    <% end %>
-  </div>
-</div>
-
 <!-- , providers_container_user_path(id: container.user.id, container_id: container.id) -->
+
+
+<ul class="cards">
+<% @containers.each do |container| %>
+  <li class="cards__item">
+    <div class="card">
+      <%= link_to customers_container_path(container) do %>
+      <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank? %>)"></div>
+      <% end %>
+      <div class="card__content">
+        <div class="card__title">  <h2> <%=container.supermarket %></h2></div>
+        <p class="card__text"><p><%= container.address %></p>
+          <p>Products: <%= container.product_category %><p>
+          <p>Posted by <%= container.user.first_name %> </p></p>
+        <button class="btn btn--block card__btn">Button</button>
+      </div>
+    </div>
+  </li>
+
+<% end %>
+</ul>
