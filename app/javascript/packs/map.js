@@ -37,24 +37,6 @@ markers.forEach(function(marker) {
   })
 });
 
-
-// var infowindow = new google.maps.InfoWindow({
-//     content:"Hello World!"
-//   });
-
-// google.maps.event.addListener(markers, 'click', function() {
-//   infowindow.open(map,markers);
-// });
-
-// google.maps.event.addListener(markers, 'click', (function(infowindow) {
-//         return function() {
-//             infowindow.open(map,markers);
-//             content: "Hello World!"
-//         }
-//     })(infowindow)
-// );
-
-
 if (markers.length === 0) {
   map.setZoom(2);
 } else if (markers.length === 1) {
@@ -64,8 +46,10 @@ if (markers.length === 0) {
   } else {
     map.fitLatLngBounds(markers);
   }
+// };
 
-
+// if (mapElement) { // don't try to build a map if there's no div#map to inject in
+//   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   console.log(user_markers);
   user_markers.forEach(function(marker) {
     map.addMarker({
@@ -74,7 +58,6 @@ if (markers.length === 0) {
       icon: user_icon,
     })
   });
-
 
   if (user_markers.length === 0) {
     map.setZoom(2);
@@ -85,8 +68,9 @@ if (markers.length === 0) {
   } else {
     map.fitLatLngBounds(user_markers);
   }
+};
 
-}
+
 
 
 

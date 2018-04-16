@@ -18,8 +18,8 @@ class Customers::VisitsController < ApplicationController
     }]
 
     @users = policy_scope(User)
-    @user = User.new
-    @users = User.where.not(latitude: nil, longitude: nil)
+    @user = User.last
+    # @users = User.where.not(latitude: nil, longitude: nil)
     # if params[:user]
     #   @user = User.new(user_params)
     #   user_params.each do |key, value|
@@ -29,13 +29,13 @@ class Customers::VisitsController < ApplicationController
     #   end
     # end
 
-    @user_markers = @users.map do |user|
-      {
-        lat: user.latitude,
-      lng: user.longitude#,
 
-    }
-    end
+    @user_markers = [
+      {
+      lat: @user.latitude,
+      lng: @user.longitude#,
+
+    }]
     authorize @visit
   end
 

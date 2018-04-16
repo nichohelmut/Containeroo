@@ -35,13 +35,15 @@ class Customers::ContainersController < ApplicationController
 
 
 
-    @user_markers = @users.map do |user|
+    @user_markers = [
       {
-      lat: user.latitude,
-      lng: user.longitude#,
+      lat: @user.latitude,
+      lng: @user.longitude#,
 
-    }
-    end
+    }]
+
+
+
   end
 
   def show
