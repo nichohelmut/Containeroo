@@ -78,6 +78,7 @@ class Customers::ContainersController < ApplicationController
             width: 40
           }
 
+
         }
       }]
     @visit = Visit.new
