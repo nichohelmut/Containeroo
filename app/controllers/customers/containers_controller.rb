@@ -18,7 +18,17 @@ class Customers::ContainersController < ApplicationController
     @markers = @containers.map do |container|
       {
       lat: container.latitude,
-      lng: container.longitude#,
+      lng: container.longitude,
+      url: "/customers/containers/#{container.id}",
+      icon: {
+          url: "https://image.flaticon.com/icons/svg/603/603401.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+
+        }
+
     }
     end
 
@@ -35,10 +45,17 @@ class Customers::ContainersController < ApplicationController
 
 
 
-    @user_markers = [
+    @usermarkers = [
       {
       lat: @user.latitude,
-      lng: @user.longitude#,
+      lng: @user.longitude,
+      icon: {
+          url: "https://image.flaticon.com/icons/svg/10/10522.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+        }
 
     }]
 
@@ -54,8 +71,14 @@ class Customers::ContainersController < ApplicationController
     [{
       lat: @container.latitude,
       lng: @container.longitude,
-      icon: '/logo.png',
-      draggable: false
+      icon: {
+          url: "https://image.flaticon.com/icons/svg/603/603401.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+
+        }
       }]
     @visit = Visit.new
     authorize @container

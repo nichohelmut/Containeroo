@@ -7,21 +7,38 @@ class Providers::ContainersController < ApplicationController
     @markers = @containers.map do |container|
       {
         lat: container.latitude,
-        lng: container.longitude
+        lng: container.longitude,
+        url: "/providers/containers/#{container.id}",
+        icon: {
+          url: "https://image.flaticon.com/icons/svg/603/603401.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+
+        }
       }
     end
 
     @users = policy_scope(User)
     @user = User.new
     @users = User.where.not(latitude: nil, longitude: nil)
+    # @container = Container.find(params[:id])
 
-    @user_markers = @users.map do |user|
+    @usermarkers = @users.map do |user|
       {
         lat: user.latitude,
-      lng: user.longitude#,
-
-    }
-  end
+        lng: user.longitude,
+        url: "/providers/containers/#{@container}/users/#{user.id}",
+        icon: {
+          url: "https://image.flaticon.com/icons/svg/10/10522.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+        }
+      }
+    end
 
 
   end
@@ -32,51 +49,56 @@ class Providers::ContainersController < ApplicationController
     [{
       lat: @container.latitude,
       lng: @container.longitude,
-      icon: '/logo.png',
-      draggable: false
+      icon: {
+          url: "https://image.flaticon.com/icons/svg/603/603401.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+        }
       }]
-       @users = policy_scope(User)
-    @user = User.new
-    @users = User.where.not(latitude: nil, longitude: nil)
+      @users = policy_scope(User)
+      @user = User.new
+      @users = User.where.not(latitude: nil, longitude: nil)
 
-    @user_markers = @users.map do |user|
-      {
-        lat: user.latitude,
+      @usermarkers = @users.map do |user|
+        {
+          lat: user.latitude,
       lng: user.longitude#,
 
     }
   end
-      authorize @container
-  end
+  authorize @container
+end
 
-  def new
-    @container = Container.new
-    authorize @container
-  end
+def new
+  @container = Container.new
+  authorize @container
+end
 
-  def create
-    @container = Container.create(container_params)
-    @container.user = current_user
-    @container.save
-    redirect_to providers_container_path(@container)
-    authorize @container
-  end
+def create
+  @container = Container.create(container_params)
+  @container.user = current_user
+  @container.save
+  redirect_to providers_container_path(@container)
+  authorize @container
+end
 
-  def update
-  end
+def update
+end
 
-  def destroy
-    @container = Container.find(params[:id])
-    @container.user = current_user
-    @container.destroy
-    redirect_to providers_container_path
-    authorize @container
-  end
+def destroy
+  @container = Container.find(params[:id])
+  @container.user = current_user
+  @container.destroy
+  redirect_to providers_container_path
+  authorize @container
+end
 
-  private
-  def container_params
-    params.require(:container).permit(:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache)
-  end
+private
+def container_params
+  params.require(:container).permit(:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache)
+end
 end
 
 

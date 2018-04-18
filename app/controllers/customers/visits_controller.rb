@@ -1,6 +1,7 @@
 class Customers::VisitsController < ApplicationController
   before_action :set_container
 
+
   def index
     @visits = policy_scope(Visit).order(created_at: :desc)
   end
@@ -15,6 +16,14 @@ class Customers::VisitsController < ApplicationController
   [{
     lat: @visit.container.latitude,
     lng: @visit.container.longitude,
+    icon: {
+          url: "https://image.flaticon.com/icons/svg/603/603401.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+
+        }
     }]
 
     @users = policy_scope(User)
@@ -30,7 +39,7 @@ class Customers::VisitsController < ApplicationController
     # end
 
 
-    @user_markers = [
+    @usermarkers = [
       {
       lat: @user.latitude,
       lng: @user.longitude#,

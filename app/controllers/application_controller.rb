@@ -17,4 +17,22 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
+  # def after_sign_in_path_for(providers)
+  #    new_providers_container_path
+  # end
+
+  # def after_sign_in_path_for(resources)
+  #   # "customers/containers/:container_id/visits"
+
+  #   customers_container_visit_path(@visit.id, @user)
+  # end
+
+  # private
+
+  # def visit_params
+  #   params.require(:visit).permit(:user, :container_id)
+  # end
+
+
 end

@@ -3,37 +3,44 @@ import { autocomplete } from 'components/autocomplete';
 
 
 // CONTAINER MARKERS
-var icon = {
-    url: "https://image.flaticon.com/icons/svg/603/603401.svg", // url
-    // url: "https://image.flaticon.com/icons/svg/10/10522.svg",
-    scaledSize: new google.maps.Size(40, 40), // scaled size
-    origin: new google.maps.Point(0,0), // origin
-    anchor: new google.maps.Point(0, 0) // anchor
-  };
+// var icon = {
+//     urlicon: "https://image.flaticon.com/icons/svg/603/603401.svg", // url
+//     // url: "https://image.flaticon.com/icons/svg/10/10522.svg",
+//     scaledSize: new google.maps.Size(40, 40), // scaled size
+//     origin: new google.maps.Point(0,0), // origin
+//     anchor: new google.maps.Point(0, 0) // anchor
+//   };
 
-  var user_icon = {
-    // url: "https://image.flaticon.com/icons/svg/603/603401.svg", // url
-    url: "https://image.flaticon.com/icons/svg/10/10522.svg",
-    scaledSize: new google.maps.Size(40, 40), // scaled size
-    origin: new google.maps.Point(0,0), // origin
-    anchor: new google.maps.Point(0, 0) // anchor
-  };
+//   var user_icon = {
+//     // url: "https://image.flaticon.com/icons/svg/603/603401.svg", // url
+//     urlicon: "https://image.flaticon.com/icons/svg/10/10522.svg",
+//     scaledSize: new google.maps.Size(40, 40), // scaled size
+//     origin: new google.maps.Point(0,0), // origin
+//     anchor: new google.maps.Point(0, 0) // anchor
+//   };
 
   const mapElement = document.getElementById('map');
-  console.debug(mapElement);
-  const markers = JSON.parse(mapElement.dataset.markers);
-  const user_markers = JSON.parse(mapElement.dataset.user_markers)
+  // console.debug(mapElement);
 
 
 
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
-console.log(markers);
-markers.forEach(function(marker) {
-  map.addMarker({
-    lng: marker.lng,
-    lat: marker.lat,
-    icon: icon,
+
+
+  const markers = JSON.parse(mapElement.dataset.markers);
+   map.addMarkers(markers);
+   // map.addMarker(icon);
+
+map.markers.forEach(function(marker) {
+  // map.addMarker({
+  //   lng: marker.lng,
+  //   lat: marker.lat,
+  //   icon: icon,
+  // });
+  marker.addListener('click', function() {
+      //standard command to open the url according to the markers url for example: url: "/locals/events/1"
+    window.location.href = marker.url;
   })
 });
 
@@ -50,23 +57,31 @@ if (markers.length === 0) {
 
 // if (mapElement) { // don't try to build a map if there's no div#map to inject in
 //   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
-  console.log(user_markers);
-  user_markers.forEach(function(marker) {
-    map.addMarker({
-      lng: marker.lng,
-      lat: marker.lat,
-      icon: user_icon,
-    })
+
+  const usermarkers = JSON.parse(mapElement.dataset.usermarkers);
+    map.addMarkers(usermarkers);
+  console.log(usermarkers);
+
+  map.usermarkers.forEach(function(usermarker) {
+    // map.addMarker({
+    //   lng: usermarkerr.lng,
+    //   lat: usermarkerr.lat,
+    //   icon: user_icon,
+    // });
+    usermarker.addListener('click', function() {
+      //standard command to open the url according to the usermarkers url for example: url: "/locals/events/1"
+    window.location.href = usermarker.url;
+  });
   });
 
-  if (user_markers.length === 0) {
+  if (usermarkers.length === 0) {
     map.setZoom(2);
-  } else if (user_markers.length === 1) {
-    map.setCenter(user_markers[0].lat, user_markers[0].lng);
+  } else if (usermarkers.length === 1) {
+    map.setCenter(usermarkers[0].lat, usermarkers[0].lng);
     //console.log(map.setZoom(14));
     map.setZoom(14 );
   } else {
-    map.fitLatLngBounds(user_markers);
+    map.fitLatLngBounds(usermarkers);
   }
 };
 

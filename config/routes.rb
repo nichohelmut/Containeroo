@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   namespace :providers do
     resources :containers do
       resources :users
@@ -14,6 +14,5 @@ Rails.application.routes.draw do
       resources :users, only: [:new, :create, :show, :destroy]
   end
 end
-  #resources :containers, only: [:new, :create,:index, :show]
   mount Attachinary::Engine => "/attachinary"
 end
