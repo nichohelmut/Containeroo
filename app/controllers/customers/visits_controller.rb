@@ -43,7 +43,14 @@ class Customers::VisitsController < ApplicationController
     @usermarkers = [
       {
       lat: @user.latitude,
-      lng: @user.longitude#,
+      lng: @user.longitude,
+      icon: {
+          url: "https://image.flaticon.com/icons/svg/10/10522.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+        }
 
     }]
     authorize @visit
