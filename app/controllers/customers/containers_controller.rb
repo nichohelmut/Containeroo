@@ -79,6 +79,22 @@ class Customers::ContainersController < ApplicationController
         }
       }]
     @visit = Visit.new
+
+
+    @users = policy_scope(User)
+    @user = User.last
+    @usermarkers = [
+      {
+      lat: @user.latitude,
+      lng: @user.longitude,
+      icon: {
+          url: "https://image.flaticon.com/icons/svg/10/10522.svg",
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+        }
+    }]
     authorize @container
   end
 
