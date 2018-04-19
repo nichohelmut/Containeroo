@@ -9,25 +9,22 @@ data-user_markers="<%= @user_markers.to_json %>"
 
 
 <ul class="cards">
+
   <li class="cards__item">
     <div class="card">
-      <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(@container.photo, height: 300, width: 400, crop: :fill) unless @container.photo.blank? %>)"></div>
-      <%# end %>
-      <div class="card__content">
-        <div class="card__title">  <h2> <%=@container.supermarket %></h2></div>
-        <p class="card__text"><p><%= @container.address %></p>
+        <div class="card__image card__image--fence" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url(<%=cl_image_path(@container.photo, height: 300, width: 400, crop: :fill) unless @container.photo.blank? %>)"></div>
+        <%# end %>
+        <div class="card__content">
+          <div class="card__title">  <h2> <%=@container.supermarket %></h2></div>
+          <p class="card__text"><p><%= @container.address %></p>
           <p>Products: <%= @container.product_category %><p>
-          <p>Posted by <%= @container.user.first_name %> </p></p>
-          <p><%= @container.description  %></p>
-
-         <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
+            <p>Posted by <%= @container.user.first_name %> </p></p>
+            <p><%= @container.description  %></p>
+            <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
           </div>
-    </div>
-
-
-  </li>
-
-</ul>
+      </div>
+    </li>
+  </ul>
 
 
 

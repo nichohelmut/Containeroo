@@ -56,11 +56,7 @@ class Customers::ContainersController < ApplicationController
             width: 40
           }
         }
-
     }]
-
-
-
   end
 
   def show
@@ -71,6 +67,7 @@ class Customers::ContainersController < ApplicationController
     [{
       lat: @container.latitude,
       lng: @container.longitude,
+      url: "/customers/containers/#{@container.id}",
       icon: {
           url: "https://image.flaticon.com/icons/svg/603/603401.svg",
           scaledSize: {
