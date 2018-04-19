@@ -1,5 +1,7 @@
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1512962406806-08c43be9952d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60f172c19409f053f0aa79da35aa5875&auto=format&fit=crop&w=1350&q=80');">
 <div class="container" >
   <div class="row">
+      <h1><span id="banner-typed-new"></span></h1>
     <div class="col-sm-offset-4 col-sm-4">
       <%= simple_form_for @container, url: providers_containers_path  do |f| %>
       <%= f.input :supermarket, label: "Supermarket or Restaurant?", collection: %w(Restaurant Edeka Aldi Real Metro Lidl Spar Netto Plus TanteEmma) %>
@@ -13,5 +15,6 @@
       <%= link_to "See all the Containers", providers_containers_path %>
     </div>
   </div>
+</div>
 </div>
 

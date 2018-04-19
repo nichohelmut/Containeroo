@@ -16,6 +16,7 @@ class Customers::VisitsController < ApplicationController
   [{
     lat: @visit.container.latitude,
     lng: @visit.container.longitude,
+    url:  "/customers/containers/#{@container.id}/visits/#{@visit.id}",
     icon: {
           url: "https://image.flaticon.com/icons/svg/603/603401.svg",
           scaledSize: {

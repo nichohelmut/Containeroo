@@ -2,27 +2,21 @@
   transform: scale(1.05);
   transition-duration: 1s, 1s;
   transition-timing-function: ease-in;
-  // background: #FD806B !important;
-  // opacity: 0.9;
+
+}
+.container-form {
+  display: inline;
+  flex-direction: row;
+  // justify-content: space-between;
+  width: auto;
 }
 
-// .container-form {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-around;
-//   width: auto;
-// }
-
-// .address {
-//   width: auto;
-
-// }
-
-// .product{
-//   width: auto;
-// }
-
-#map img {
-  height: 40px;
-  width: 40px;
+.address {
+  width: 50%;
+  display: inline-block;
 }
+.product{
+  width: 49%;
+  display: inline-block;
+}
+

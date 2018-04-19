@@ -1,0 +1,142 @@
+body {
+  background: #ffffff;
+  color: black;
+}
+
+.header-wrapper {
+  margin: 10px;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-family: "Passion One", sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  display: inline-block;
+  height: 40px;
+  margin: 0 4px 0 0;
+  overflow: hidden;
+  span.wrapper {
+    display: block;
+    animation: animate-header ease-in-out 4s;
+    animation-fill-mode:forwards
+  }
+  span.word {
+    display: block;
+    margin: 0 0 10px 0;
+    &.a {
+      color: black;
+    }
+    &.b {
+      color: black;
+    }
+    &.c {
+      color: black;
+    }
+    &.d {
+      color: black;
+    }
+    &.e {
+      color: black;
+    }
+    &.f {
+      color: black;
+    }
+    &.g {
+      color: black;
+    }
+    &.h {
+      color: black;
+    }
+    &.i {
+      color: black;
+    }
+    &.j {
+      color: black;
+    }
+    &.k {
+      color: black;
+    }
+    &.l {
+      color: black;
+    }
+    &.m {
+      color: black;
+    }
+    &.n {
+      color: black;
+    }
+    &.o {
+      color: black;
+    }
+    &.p {
+      color: black;
+    }
+    &.q {
+      color: black;
+    }
+    &.end {
+      color: #fc6f57;
+    }
+  }
+}
+
+@keyframes animate-header {
+  0% {
+     margin: 0 0 0 0;
+  }
+  20% {
+     margin: 0 0 0 0;
+  }
+  30% {
+    margin: -50px 0 0 0;
+  }
+  39% {
+    margin: -100px 0 0 0;
+  }
+  47% {
+    margin: -150px 0 0 0;
+  }
+  54% {
+    margin: -200px 0 0 0;
+  }
+  60% {
+    margin: -250px 0 0 0;
+  }
+  65% {
+    margin: -300px 0 0 0;
+  }
+  69% {
+    margin: -350px 0 0 0;
+  }
+  73% {
+    margin: -400px 0 0 0;
+  }
+  77% {
+    margin: -450px 0 0 0;
+  }
+  80% {
+    margin: -500px 0 0 0;
+  }
+  83% {
+    margin: -550px 0 0 0;
+  }
+  86% {
+    margin: -600px 0 0 0;
+  }
+  89% {
+    margin: -650px 0 0 0;
+  }
+  92% {
+    margin: -700px 0 0 0;
+  }
+  95% {
+    margin: -750px 0 0 0;
+  }
+  98% {
+    margin: -800px 0 0 0;
+  }
+  100% {
+    margin: -850px 0 0 0;
+  }
+}

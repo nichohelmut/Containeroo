@@ -1,3 +1,4 @@
+// home page
 import Typed from 'typed.js';
 function loadDynamicBannerText() {
   new Typed('#banner-typed-text', {
@@ -6,4 +7,5 @@ function loadDynamicBannerText() {
     loop: true
   });
 }
+
 export { loadDynamicBannerText };
