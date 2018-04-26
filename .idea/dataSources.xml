@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails Containeroo: development" uuid="ddc78ab6-0500-409d-bef7-592548d145c6">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:Containeroo_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails Containeroo: production" uuid="db1b384f-0c5e-4fcc-a0ca-2939eb9e527f">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:Containeroo_production</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails Containeroo: test" uuid="c476dd87-8df3-48ac-9db1-7242071b17fd">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:Containeroo_test</jdbc-url>
+    </data-source>
+  </component>
+</project>

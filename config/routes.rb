@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
@@ -9,10 +11,10 @@ Rails.application.routes.draw do
   end
 
   namespace :customers do
-    resources :containers, only: [:index, :show, :new, :create] do
-      resources :visits, only: [:index, :show, :new,:create]
-      resources :users, only: [:new, :create, :show, :destroy]
+    resources :containers, only: %i[index show new create] do
+      resources :visits, only: %i[index show new create]
+      resources :users, only: %i[new create show destroy]
+    end
   end
-end
-  mount Attachinary::Engine => "/attachinary"
+  mount Attachinary::Engine => '/attachinary'
 end
