@@ -1,5 +1,6 @@
+
 class Providers::UsersController < ApplicationController
-  #before_action :authenticate_user!
+  # before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     authorize @user
@@ -24,6 +25,7 @@ class Providers::UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit([:first_name, :last_name, :email])
     authorize @user
