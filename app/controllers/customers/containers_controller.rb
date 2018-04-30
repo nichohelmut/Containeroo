@@ -27,9 +27,7 @@ class Customers::ContainersController < ApplicationController
             height: 40,
             width: 40
           }
-
         }
-
       }
     end
 

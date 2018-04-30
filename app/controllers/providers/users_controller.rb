@@ -1,4 +1,6 @@
 
+# frozen_string_literal: true
+
 class Providers::UsersController < ApplicationController
   # before_action :authenticate_user!
   def show
@@ -18,6 +20,8 @@ class Providers::UsersController < ApplicationController
     authorize @user
   end
 
+
+
   def destroy
     @container = Container.find(params[:container_id])
     @container.destroy
@@ -27,7 +31,7 @@ class Providers::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit([:first_name, :last_name, :email])
+    params.require(:user).permit(%i[first_name last_name email])
     authorize @user
   end
 end

@@ -3,7 +3,7 @@ id="map"
 style="width: 100%;
 height: 400px;"
 data-markers="<%= @markers.to_json %>"
-data-user_markers="<%= @user_markers.to_json %>"
+data-usermarkers="<%= @usermarkers.to_json %>"
 
 ></div>
 
@@ -18,13 +18,14 @@ data-user_markers="<%= @user_markers.to_json %>"
           <div class="card__title">  <h2> <%=@container.supermarket %></h2></div>
           <p class="card__text"><p><%= @container.address %></p>
           <p>Products: <%= @container.product_category %><p>
-            <p>Posted by <%= @container.user.first_name %> </p></p>
+            <p>Posted by <%= @container.user.first_name %> </p>
             <p><%= @container.description  %></p>
             <%= link_to "Confirm", providers_containers_path, class: "btn-submit" %>
+            <% link_to "Edit", edit_providers_container_path(@container), class: 'btn-submit'  %>
           </div>
       </div>
-    </li>
-  </ul>
+  </li>
+</ul>
 
 
 
