@@ -18,10 +18,13 @@
           <p>Posted by <%= container.user.first_name %> </p></p>
           <p><%= container.description  %></p>
 
-
     <% if policy(container).destroy? %>
         <p><%= link_to "Delete", providers_container_user_path(container), method: :delete %></p>
       <% end %>
+
+        <% if policy(container).update? %>
+          <p><%= link_to 'Update',  edit_providers_container_path(container) %></p>
+        <%	 end %>
       </div>
     </div>
   </li>

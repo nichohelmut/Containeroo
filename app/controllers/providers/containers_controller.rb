@@ -2,6 +2,7 @@
 
 class Providers::ContainersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_container, only: %i[show edit update destroy]
   def index
     @containers = policy_scope(Container).order(created_at: :desc)
     @containers = Container.where.not(latitude: nil, longitude: nil)
@@ -43,7 +44,6 @@ class Providers::ContainersController < ApplicationController
   end
 
   def show
-    @container = Container.find(params[:id])
     @markers =
       [{
         lat: @container.latitude,
@@ -62,12 +62,12 @@ class Providers::ContainersController < ApplicationController
     @users = User.where.not(latitude: nil, longitude: nil)
 
     @usermarkers = @users.map do |user|
-  {
-    lat: user.latitude,
-    lng: user.longitude # ,
+      {
+        lat: user.latitude,
+        lng: user.longitude # ,
 
-  }
-end
+      }
+    end
     authorize @container
 end
 
@@ -84,10 +84,20 @@ end
     authorize @container
   end
 
-  def update; end
+  def edit
+    authorize @container
+  end
+
+  def update
+    if @container.update(container_params)
+      redirect_to providers_container_path(@container)
+    else
+      render :edit
+   end
+    authorize @container
+  end
 
   def destroy
-    @container = Container.find(params[:id])
     @container.user = current_user
     @container.destroy
     redirect_to providers_container_path
@@ -96,7 +106,12 @@ end
 
   private
 
+  def set_container
+    @container = Container.find(params[:id])
+  end
+
   def container_params
-    params.require(:container).permit(:address, :description, :supermarket, :user, :product_category, :photo, :photo_cache)
+    params.require(:container).permit(:address, :description, :supermarket,
+                                      :user, :product_category, :photo, :photo_cache)
   end
 end

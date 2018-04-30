@@ -1,0 +1,18 @@
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1510893265870-320979e20c42?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=da52a91b70afbe43d72515b6935f0dae&auto=format&fit=crop&w=802&q=80');">
+  <div class="container">
+    <div class="row">
+      <h1><span id="banner-typed-new"></span></h1>
+      <div class="col-sm-offset-4 col-sm-4">
+        <%= simple_form_for @container, url: providers_container_path, method: :put do |f| %>
+          <%= f.input :supermarket, label: "Supermarket or Restaurant?", collection: %w(Restaurant Edeka Aldi Real Metro Lidl Spar Netto Plus TanteEmma) %>
+          <%= f.input :address %>
+          <%= f.input :product_category, collection: %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy) %>
+          <%= f.input :description, :input_html => {:size => 100, :maxlength => 30}, placeholder: "Description in a few words" %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
