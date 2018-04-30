@@ -55,7 +55,8 @@ class Customers::VisitsController < ApplicationController
       }
     ]
     authorize @visit
-  end
+
+      end
 
   def new
     @visit = Visit.new
@@ -77,6 +78,7 @@ class Customers::VisitsController < ApplicationController
   def set_container
     @container = Container.find(params[:container_id])
   end
+
 
   def visit_params
     params.require(:visit).permit(:user, :container_id)
