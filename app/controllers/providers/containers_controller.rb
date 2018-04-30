@@ -26,21 +26,6 @@ class Providers::ContainersController < ApplicationController
     @user = User.new
     @users = User.where.not(latitude: nil, longitude: nil)
     # @container = Container.find(params[:id])
-
-    @usermarkers = @users.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        url: "/providers/containers/#{@container}/users/#{user.id}",
-        icon: {
-          url: 'https://image.flaticon.com/icons/svg/10/10522.svg',
-          scaledSize: {
-            height: 40,
-            width: 40
-          }
-        }
-      }
-    end
   end
 
   def show
@@ -64,8 +49,14 @@ class Providers::ContainersController < ApplicationController
     @usermarkers = @users.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude # ,
-
+        lng: user.longitude,
+        icon: {
+          url: 'https://image.flaticon.com/icons/svg/10/10522.svg',
+          scaledSize: {
+            height: 40,
+            width: 40
+          }
+        }
       }
     end
     authorize @container

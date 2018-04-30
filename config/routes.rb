@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :containers, only: %i[index show new create] do
       resources :visits, only: %i[index show new create]
       resources :users, only: %i[new create show destroy]
+      resources :reviews, only: %i[index show new create destroy]
+
     end
   end
   mount Attachinary::Engine => '/attachinary'

@@ -12,7 +12,6 @@ class Customers::UsersController < ApplicationController
     @user = User.create(user_params)
     @user.save
     authorize @user
-
   end
 
   def show

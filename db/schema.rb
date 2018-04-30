@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411174554) do
+ActiveRecord::Schema.define(version: 20180430105416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20180411174554) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_containers_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "first_name"
+    t.integer "rating"
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "container_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["container_id"], name: "index_reviews_on_container_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,6 +91,8 @@ ActiveRecord::Schema.define(version: 20180411174554) do
   end
 
   add_foreign_key "containers", "users"
+  add_foreign_key "reviews", "containers"
+  add_foreign_key "reviews", "users"
   add_foreign_key "visits", "containers"
   add_foreign_key "visits", "users"
 end

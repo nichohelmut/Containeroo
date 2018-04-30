@@ -38,7 +38,7 @@ class Customers::ContainersController < ApplicationController
       @user = User.new(user_params)
       user_params.each do |key, value|
         key == 'address' && value != ''
-        end
+      end
       end
     @user.save
 
@@ -58,7 +58,6 @@ class Customers::ContainersController < ApplicationController
   end
 
   def show
-    @container = Container.find(params[:id])
     # @visit = Visit.where(user: current_user, container: @container).first
     @container = Container.find(params[:id])
     @markers =
@@ -93,6 +92,12 @@ class Customers::ContainersController < ApplicationController
       }
     ]
     authorize @container
+
+    @review = Review.create(params[:review])
+    @review.container = @container
+    @review.user_id = current_user.id
+    @review.save
+
   end
 
   def new
