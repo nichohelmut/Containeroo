@@ -27,6 +27,9 @@ data-usermarkers="<%= @usermarkers.to_json %>"
     </li>
   </ul>
 
+<ul class="cards">
+  <li class="cards__item">
+    <div class="card">
 <% @container.reviews.each do |r| %>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -49,6 +52,9 @@ data-usermarkers="<%= @usermarkers.to_json %>"
     <% end %>
   </div>
 </div>
+    </div>
+  </li>
+</ul>
 
 
 
