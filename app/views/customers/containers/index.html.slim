@@ -1,0 +1,48 @@
+#map data-markers="#{@markers.to_json}" data-usermarkers="#{@usermarkers.to_json}" style=("width: 100%;\r\n height: 400px;")
+
+
+link href='https://fonts.googleapis.com/css?family=Passion+One:700' rel='stylesheet' type='text/css'
+
+div class="header-wrapper"
+  h1
+    'You can find fridges in'
+    h1
+      span class="wrapper"
+       - @neighborhoods_berlin.each do |neighborhood|
+        span class="word a" =neighborhood
+      span class="word end" ="Berlin"
+
+div class="container-form"
+  div class="address"
+    = simple_form_for User.new, url: customers_containers_path, method: :get do |f|
+      = f.input :address, input_html: {id: "user_address"}, placeholder: "Your Location?"
+      = f.input :first_name, as: :hidden, autofocus: true, input_html: { value:  "mikkel" }
+      = f.input :last_name, as: :hidden,  autofocus: true , input_html: { value:  "angelo" }
+      = f.input :email, as: :hidden, autofocus: true , input_html: { value: [[("a".."z").to_a[rand(26)]], "@email.com"].join}
+      = f.input :password, as: :hidden, input_html: { value:  123456 }
+      = f.input :password_confirmation, as: :hidden, input_html: { value:  123456 }
+      = f.submit "submit"
+
+  div class="product"
+    = simple_form_for Container.new, url: customers_containers_path, method: :get do |f|
+      = f.input :product_category , collection:  %w(vegetables meats fruits bread dairy liquid beer cans ingredients starchy)
+      = f.submit "submit"
+
+
+ul.cards
+  - @containers.each do |container|
+    li.cards__item
+      div.card
+        div.card__image.card__image--fence style =("background-image: linear-gradient(rgba(0),0,0,0),rgba(0,0,0,0)),url(#{cl_image_path(container.photo, height: 300, width: 400, crop: :fill) unless container.photo.blank?})")
+          div.card__content
+            div.card__title
+              h2= container.supermarket
+            div.card__text
+              p
+                = container.address
+                = container.product_category
+                = link_to container.user.first_name, providers_container_user_path(id: container.user.id, container_id: container.id)
+            div
+              = simple_form_for Visit.new, url: customers_container_visits_path(container) do |f|
+                = f.input :user_id, as: :hidden, input_html: {value: @user}
+                = f.submit "Visit?", class: "btn-submit"

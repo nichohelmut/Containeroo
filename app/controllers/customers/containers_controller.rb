@@ -55,6 +55,12 @@ class Customers::ContainersController < ApplicationController
         }
       }
     ]
+
+    @neighborhoods_berlin = %w[Kreuzberg Mitte Moabit PrenzlauerBerg
+                               Fridrichshain Charlottenburg
+                               NeuKölln Wedding Pankow Lichterfelde Schöneberg
+                               Wilmersdorf Halensee
+                               Rummelsburg GörlitzerPark Tegel Fridenau]
   end
 
   def show
@@ -97,7 +103,6 @@ class Customers::ContainersController < ApplicationController
     @review.container = @container
     @review.user_id = current_user.id
     @review.save
-
   end
 
   def new

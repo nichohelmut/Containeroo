@@ -23,6 +23,7 @@ gem 'jquery-fileupload-rails'
 gem 'pundit'
 gem 'sass-rails'
 gem 'simple_form'
+gem 'slim'
 gem 'uglifier'
 gem 'webpacker'
 
