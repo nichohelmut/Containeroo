@@ -2,6 +2,7 @@
 
 class Customers::ContainersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show new create]
+  before_action :set_paper_trail_whodunnit
 
   def index
     @container = Container.new
